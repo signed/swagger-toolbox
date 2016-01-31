@@ -15,7 +15,9 @@ if (project.hasProperty('release')) {
 apply plugin: 'java'
 
 repositories {
+    mavenLocal()
     mavenCentral()
+    jcenter()
 }
 
 sourceCompatibility = 1.8
