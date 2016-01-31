@@ -21,6 +21,11 @@ dependencies {
     )
 }
 
+compileJava {
+    options.encoding = 'UTF-8'
+    options.compilerArgs = ['-Xlint', '-Xlint:-serial', '-Xlint:-path']
+}
+
 test {
     testLogging {
         exceptionFormat = 'full'
