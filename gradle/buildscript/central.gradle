@@ -1,0 +1,45 @@
+apply plugin: 'com.bmuschko.nexus'
+
+modifyPom {
+    project {
+        name 'swagger toolbox'
+        description 'A collection of tools to work with swagger api descriptions in the java.'
+        url 'https://github.com/signed/swagger-toolbox'
+        inceptionYear '2016'
+
+        licenses {
+            license {
+                name 'Apache 2.0 License'
+                url 'https://www.apache.org/licenses/LICENSE-2.0.txt'
+                distribution 'repo'
+            }
+        }
+
+        scm {
+            url 'https://github.com/signed/swagger-toolbox'
+            connection 'scm:https://github.com/signed/swagger-toolbox.git'
+            developerConnection 'scm:git@github.com:signed/swagger-toolbox.git'
+        }
+
+        developers {
+            developer {
+                id 'thomasheilbronner'
+                name 'Thomas Heilbronner'
+            }
+        }
+
+    }
+}
+
+ext.nexusUserName = deploymentSonatypeLogin
+ext.nexusPassword = deploymentSonatypePassword
+
+extraArchive {
+    sources = true
+    tests = false
+    javadoc = false
+}
+
+nexus {
+    sign = true
+}

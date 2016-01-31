@@ -1,3 +1,17 @@
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.bmuschko:gradle-nexus-plugin:2.3.1'
+    }
+}
+
+if (project.hasProperty('release')) {
+    apply from: "$rootDir/gradle/buildscript/central.gradle"
+}
+
 apply plugin: 'java'
 
 repositories {
@@ -9,15 +23,15 @@ targetCompatibility = 1.8
 
 dependencies {
     compile(
-            'io.swagger:swagger-parser:1.0.16'
-            , 'com.github.fge:json-schema-validator:2.2.6'
+        'io.swagger:swagger-parser:1.0.16'
+        , 'com.github.fge:json-schema-validator:2.2.6'
     )
     testCompile(
-            'junit:junit:4.12'
-            , 'org.hamcrest:java-hamcrest:2.0.0.0'
-            , 'org.mockito:mockito-core:2.0.36-beta'
-            , 'info.cukes:cucumber-java:1.2.4'
-            , 'info.cukes:cucumber-junit:1.2.4'
+        'junit:junit:4.12'
+        , 'org.hamcrest:java-hamcrest:2.0.0.0'
+        , 'org.mockito:mockito-core:2.0.36-beta'
+        , 'info.cukes:cucumber-java:1.2.4'
+        , 'info.cukes:cucumber-junit:1.2.4'
     )
 }
 
