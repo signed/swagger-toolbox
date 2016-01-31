@@ -1,3 +1,6 @@
+SwaggerMerge:
+- Do not communicate merge conflicts with exceptions
+
 SwaggerTrim:
 - OperationMother to ensure all the necessary fields are set for validation
 
