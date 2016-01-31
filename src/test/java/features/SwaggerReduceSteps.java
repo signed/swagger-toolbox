@@ -21,8 +21,8 @@ public class SwaggerReduceSteps {
     private SwaggerBuilder mergedSwaggerDescription;
     private Swagger reducedSwagger;
 
-    @Given("^a merged swagger api description$")
-    public void a_merged_swagger_api_description() throws Throwable {
+    @Given("^a swagger api description$")
+    public void a_swagger_api_description() throws Throwable {
         mergedSwaggerDescription = SwaggerMother.mergedSwaggerDescription();
     }
 
