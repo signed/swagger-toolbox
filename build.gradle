@@ -8,11 +8,11 @@ buildscript {
     }
 }
 
+apply plugin: 'java'
+
 if (project.hasProperty('release')) {
     apply from: "$rootDir/gradle/buildscript/central.gradle"
 }
-
-apply plugin: 'java'
 
 repositories {
     mavenLocal()
@@ -22,6 +22,9 @@ repositories {
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
+
+group = 'com.github.signed.swagger'
+version = '0.1.0'
 
 dependencies {
     compile(
