@@ -31,9 +31,6 @@ modifyPom {
     }
 }
 
-ext.nexusUserName = deploymentSonatypeLogin
-ext.nexusPassword = deploymentSonatypePassword
-
 extraArchive {
     sources = true
     tests = false
