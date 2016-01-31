@@ -4,6 +4,9 @@ repositories {
     mavenCentral()
 }
 
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
 dependencies {
     compile(
             'io.swagger:swagger-parser:1.0.16'
