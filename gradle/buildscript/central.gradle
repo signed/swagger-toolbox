@@ -3,7 +3,7 @@ apply plugin: 'com.bmuschko.nexus'
 modifyPom {
     project {
         name 'swagger toolbox'
-        description 'A collection of tools to work with swagger api descriptions in the java.'
+        description 'A collection of tools to work with swagger api descriptions in java.'
         url 'https://github.com/signed/swagger-toolbox'
         inceptionYear '2016'
 
