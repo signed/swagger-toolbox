@@ -14,6 +14,7 @@ SwaggerSort:
 SwaggerCompare
 - Decide if two api definitions are the same and report differences
 - define what 'the same' means
+- https://github.com/skyscreamer/JSONassert (check for comparing json)
 
 - there is a java script tool out there that performs some semantic checks on swagger files 
   https://github.com/apigee-127/swagger-tools/blob/master/docs/Swagger_Validation.md
