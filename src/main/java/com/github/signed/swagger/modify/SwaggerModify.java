@@ -1,5 +1,7 @@
 package com.github.signed.swagger.modify;
 
+import static com.github.signed.swagger.modify.ModificationResult.failed;
+
 import java.util.Optional;
 import java.util.function.Consumer;
 
@@ -16,13 +18,13 @@ public class SwaggerModify {
     public ModificationResult modify(Swagger swagger, OperationIdentifier identifier, Consumer<Operation> modification) {
         Path path = swagger.getPath(identifier.path);
         if (null == path) {
-            return ModificationResult.noSuchPath(swagger, identifier);
+            return failed(swagger, cause -> cause.pathNotDefined(identifier));
         }
         Optional<Operation> maybeOperation = paths.getOperation(path, identifier.verb);
         if (!maybeOperation.isPresent()) {
-            return ModificationResult.noSuchOperation(swagger, identifier);
+            return failed(swagger, cause -> cause.operationNotDefined(identifier));
         }
         modification.accept(maybeOperation.get());
-        return ModificationResult.updatedSuccessfully(swagger);
+        return ModificationResult.success(swagger);
     }
 }

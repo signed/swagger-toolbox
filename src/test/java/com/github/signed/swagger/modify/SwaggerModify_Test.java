@@ -12,7 +12,6 @@ import org.junit.Test;
 import com.github.signed.swagger.essentials.SwaggerBuilder;
 
 import io.swagger.models.Operation;
-import io.swagger.models.Swagger;
 
 public class SwaggerModify_Test {
 
@@ -40,9 +39,7 @@ public class SwaggerModify_Test {
     }
 
     private ModificationResult modify() {
-        Swagger swagger = swaggerBuilder.build();
-
-        return swaggerModify.modify(swagger, identifier, modification);
+        return swaggerModify.modify(swaggerBuilder.build(), identifier, modification);
     }
 
 }

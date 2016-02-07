@@ -1,33 +1,24 @@
 package com.github.signed.swagger.modify;
 
+import java.util.Optional;
 import java.util.function.Consumer;
 
 import io.swagger.models.Swagger;
 
 public class ModificationResult {
 
-    public interface Cause {
-        void pathNotDefined(OperationIdentifier identifier);
-
-        void operationNotDefined(OperationIdentifier identifier);
+    public static ModificationResult failed(Swagger swagger, Consumer<ModificationFailureCause> causeConsumer) {
+        return new ModificationResult(swagger, Optional.of(causeConsumer));
     }
 
-    public static ModificationResult noSuchPath(Swagger swagger, OperationIdentifier identifier) {
-        return new ModificationResult(swagger, cause -> cause.pathNotDefined(identifier));
+    public static ModificationResult success(Swagger swagger) {
+        return new ModificationResult(swagger, Optional.empty());
     }
 
-    public static ModificationResult noSuchOperation(Swagger swagger, OperationIdentifier identifier) {
-        return new ModificationResult(swagger, cause -> cause.operationNotDefined(identifier));
-    }
-
-    public static ModificationResult updatedSuccessfully(Swagger swagger) {
-        return new ModificationResult(swagger, null);
-    }
-
-    private final Consumer<Cause> causeConsumer;
+    private final Optional<Consumer<ModificationFailureCause>> causeConsumer;
     private final Swagger swagger;
 
-    public ModificationResult(Swagger swagger, Consumer<Cause> causeConsumer) {
+    public ModificationResult(Swagger swagger, Optional<Consumer<ModificationFailureCause>> causeConsumer) {
         this.swagger = swagger;
         this.causeConsumer = causeConsumer;
     }
@@ -36,14 +27,27 @@ public class ModificationResult {
         return swagger;
     }
 
-    public boolean SuccessOr(Cause cause) {
-        if (null != causeConsumer) {
-            causeConsumer.accept(cause);
-        }
-        return success();
+    public boolean success() {
+        return successOr(new ModificationFailureCause() {
+            @Override
+            public void pathNotDefined(OperationIdentifier identifier) {
+                //do nothing
+            }
+
+            @Override
+            public void operationNotDefined(OperationIdentifier identifier) {
+                //do nothing
+            }
+        });
     }
 
-    public boolean success() {
-        return null == causeConsumer;
+    public boolean successOr(ModificationFailureCause cause) {
+        if (causeConsumer.isPresent()) {
+            causeConsumer.get().accept(cause);
+            return false;
+        }
+        return true;
     }
+
+
 }
