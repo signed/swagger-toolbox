@@ -24,6 +24,12 @@ public class PathBuilder {
         return builder;
     }
 
+    public OperationBuilder withGet() {
+        OperationBuilder builder = new OperationBuilder();
+        operations.add(path -> path.set("get", builder.build()));
+        return builder;
+    }
+
     public ParameterBuilder withParameterForAllOperations() {
         ParameterBuilder parameterBuilder = new ParameterBuilder();
         withParameterForAllOperations(parameterBuilder);
