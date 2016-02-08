@@ -29,17 +29,21 @@ public class SwaggerMerger {
 
     private final SwaggerStreams swaggerStreams = new SwaggerStreams();
 
-    public Swagger merge(Swagger one, Swagger two) {
-        LinkedHashMap<String, Path> mergedPaths = mergePathDefinitions(one, two);
-        LinkedHashMap<String, Model> mergedDefinitions = mergedModelDefinitions(one, two);
-        List<Tag> mergedTagDefinitions = mergedTagDefinitions(one, two);
+    public MergeResult merge(Swagger one, Swagger two){
+        try {
+            LinkedHashMap<String, Path> mergedPaths = mergePathDefinitions(one, two);
+            LinkedHashMap<String, Model> mergedDefinitions = mergedModelDefinitions(one, two);
+            List<Tag> mergedTagDefinitions = mergedTagDefinitions(one, two);
 
-        Swagger swagger = new Swagger();
-        swagger.setPaths(mergedPaths.isEmpty() ? null : mergedPaths);
-        swagger.setDefinitions(mergedDefinitions.isEmpty() ? null : mergedDefinitions);
-        swagger.setTags(mergedTagDefinitions.isEmpty() ? null : mergedTagDefinitions);
+            Swagger swagger = new Swagger();
+            swagger.setPaths(mergedPaths.isEmpty() ? null : mergedPaths);
+            swagger.setDefinitions(mergedDefinitions.isEmpty() ? null : mergedDefinitions);
+            swagger.setTags(mergedTagDefinitions.isEmpty() ? null : mergedTagDefinitions);
 
-        return swagger;
+            return MergeResult.success(swagger);
+        }catch (SwaggerMergeException ex){
+            return MergeResult.failed(null, (mergeFailureCause) -> mergeFailureCause.conflict(ex));
+        }
     }
 
     private LinkedHashMap<String, Path> mergePathDefinitions(Swagger one, Swagger two) {

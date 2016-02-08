@@ -10,6 +10,7 @@ import static org.hamcrest.Matchers.nullValue;
 import com.github.signed.swagger.essentials.SwaggerBuilder;
 import com.github.signed.swagger.essentials.SwaggerMatcher;
 import com.github.signed.swagger.essentials.SwaggerMother;
+import com.github.signed.swagger.merge.MergeResult;
 import com.github.signed.swagger.merge.SwaggerMergeException;
 import com.github.signed.swagger.merge.SwaggerMerger;
 
@@ -80,21 +81,20 @@ public class SwaggerMergeSteps {
 
     @When("^merged$")
     public void merged() throws Throwable {
-        try {
-            Swagger first = this.first.build();
-            Swagger second = this.second.build();
-            System.out.println(Json.pretty(first));
-            System.out.println(Json.pretty(second));
-            mergedApiDefinition = merger.merge(first, second);
-            System.out.println(Json.pretty(mergedApiDefinition));
-        }catch (SwaggerMergeException ex){
-            mergeException = ex;
+        Swagger first = this.first.build();
+        Swagger second = this.second.build();
+        System.out.println(Json.pretty(first));
+        System.out.println(Json.pretty(second));
+        MergeResult mergeResult = merger.merge(first, second);
+        if (mergeResult.successOr(ex -> mergeException = ex)) {
+            mergedApiDefinition = mergeResult.swagger();
         }
+        System.out.println(Json.pretty(mergedApiDefinition));
     }
 
     @Then("^the path elements of booth are in the resulting swagger api description$")
     public void the_path_elements_of_booth_are_in_the_resulting_swagger_api_description() throws Throwable {
-        assertThat(mergedApiDefinition, hasPathDefinitionsFor("/first","/second"));
+        assertThat(mergedApiDefinition, hasPathDefinitionsFor("/first", "/second"));
     }
 
     @Then("^the tag definitions of booth are in the resulting swagger api description$")
@@ -109,7 +109,7 @@ public class SwaggerMergeSteps {
 
     @Then("^the model definitions of booth are in the resulting swagger api description$")
     public void the_model_definitions_of_booth_are_in_the_resulting_swagger_api_description() throws Throwable {
-        assertThat(mergedApiDefinition, SwaggerMatcher.hasModelDefinitionsFor("something", "anotherthing") );
+        assertThat(mergedApiDefinition, SwaggerMatcher.hasModelDefinitionsFor("something", "anotherthing"));
     }
 
     @Then("^the definition is contained only once$")
@@ -119,7 +119,7 @@ public class SwaggerMergeSteps {
 
     @Then("^the caller is informed about the conflict$")
     public void the_caller_is_informed_about_the_conflict() throws Throwable {
-        assertThat("The caller should have been notified",mergeException, not(nullValue()));
+        assertThat("The caller should have been notified", mergeException, not(nullValue()));
     }
 
     @Then("^there is only a single tag definition$")

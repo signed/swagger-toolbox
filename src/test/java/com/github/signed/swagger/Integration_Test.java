@@ -57,7 +57,7 @@ public class Integration_Test {
         _1st.getPaths().values().stream().map(Path::getOperations).flatMap(Collection::stream).forEach(a -> a.tag("public"));
         Swagger _2nd = parser.read(second);
         List<Swagger> collect = Stream.of(_1st, _2nd).map(reduce::reduce).map(trim::trim).collect(Collectors.toList());
-        Swagger result = this.merge.merge(collect.get(0), collect.get(1));
+        Swagger result = this.merge.merge(collect.get(0), collect.get(1)).swagger();
         Yaml.prettyPrint(_1st);
         Json.prettyPrint(result);
     }
