@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/signed/swagger-toolbox.svg?branch=master)](https://travis-ci.org/signed/swagger-toolbox)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.signed.swagger/swagger-toolbox/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.signed.swagger/swagger-toolbox)
 
 What tools are in the box?
  
