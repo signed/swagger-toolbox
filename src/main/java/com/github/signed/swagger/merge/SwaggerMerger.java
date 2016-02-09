@@ -27,7 +27,7 @@ public class SwaggerMerger {
 
     private final SwaggerStreams swaggerStreams = new SwaggerStreams();
 
-    public MergeResult merge(Swagger one, Swagger two){
+    public MergeResult merge(Swagger one, Swagger two) {
         try {
             Map<String, Path> mergedPaths = mergePathDefinitions(one, two);
             Map<String, Model> mergedDefinitions = mergedModelDefinitions(one, two);
@@ -39,17 +39,18 @@ public class SwaggerMerger {
             swagger.setTags(mergedTagDefinitions.isEmpty() ? null : mergedTagDefinitions);
 
             return MergeResult.success(swagger);
-        }catch (SwaggerMergeException ex){
+        } catch (SwaggerMergeException ex) {
             return MergeResult.failed(null, (mergeFailureCause) -> mergeFailureCause.conflict(ex));
         }
     }
 
     private LinkedHashMap<String, Path> mergePathDefinitions(Swagger one, Swagger two) {
         List<Pair<String, String>> conflictingPathDefinitions = swaggerStreams.pathStream(one).
-                filter(pathContainedInBooth(two))
-                .map(serializeBothModelElementsToJson(one, two, (swagger, s) -> swagger.getPaths().get(s)))
-                .filter(thoseWhoAreNotIdentical())
-                .collect(toList());
+            filter(pathContainedInBooth(two))
+            .map(serializeBothModelElementsToJson(one, two, (swagger, s) -> swagger.getPaths().get(s)))
+            .filter(thoseWhoAreNotIdentical())
+            .collect(toList());
+
 
         if (!conflictingPathDefinitions.isEmpty()) {
             throw new SwaggerMergeException("conflicting path definitions");
@@ -63,10 +64,10 @@ public class SwaggerMerger {
 
     private LinkedHashMap<String, Model> mergedModelDefinitions(Swagger one, Swagger two) {
         List<Pair<String, String>> conflictingModelDefinition = swaggerStreams.definitions(one).keySet().stream().
-                filter(definitionsContainedInBooth(two))
-                .map(serializeBothModelElementsToJson(one, two, (swagger, s) -> swagger.getDefinitions().get(s)))
-                .filter(thoseWhoAreNotIdentical())
-                .collect(toList());
+            filter(definitionsContainedInBooth(two))
+            .map(serializeBothModelElementsToJson(one, two, (swagger, s) -> swagger.getDefinitions().get(s)))
+            .filter(thoseWhoAreNotIdentical())
+            .collect(toList());
 
         if (!conflictingModelDefinition.isEmpty()) {
             throw new SwaggerMergeException("conflicting model definitions");
@@ -82,11 +83,11 @@ public class SwaggerMerger {
         Map<String, Tag> firstTagByName = swaggerStreams.tagsStream(one).collect(Collectors.toMap(Tag::getName, tag -> tag));
         Map<String, Tag> secondTagByName = swaggerStreams.tagsStream(two).collect(Collectors.toMap(Tag::getName, tag -> tag));
         List<Pair<String, String>> conflictingTagDefinitions = firstTagByName.keySet().stream().filter(secondTagByName::containsKey)
-                .map(serializeBothModelElementsToJson(one, two, tagWithName()))
-                .filter(thoseWhoAreNotIdentical())
-                .collect(toList());
+            .map(serializeBothModelElementsToJson(one, two, tagWithName()))
+            .filter(thoseWhoAreNotIdentical())
+            .collect(toList());
 
-        if(!conflictingTagDefinitions.isEmpty()){
+        if (!conflictingTagDefinitions.isEmpty()) {
             throw new SwaggerMergeException("conflicting tag definitions");
         }
 
@@ -99,8 +100,8 @@ public class SwaggerMerger {
 
     private BiFunction<Swagger, String, Object> tagWithName() {
         return (swagger, s) -> swagger.getTags().stream()
-                .filter(tag -> s.equals(tag.getName()))
-                .findFirst().get();
+            .filter(tag -> s.equals(tag.getName()))
+            .findFirst().get();
     }
 
     private Predicate<Pair<String, String>> thoseWhoAreNotIdentical() {
