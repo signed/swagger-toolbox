@@ -11,6 +11,10 @@ SwaggerSort:
   - parameters
   - ...
 
+SwaggerValidate:
+- check for ambiguity in path definitions
+  - /{variable} and /constant
+
 SwaggerCompare
 - Decide if two api definitions are the same and report differences
 - define what 'the same' means
