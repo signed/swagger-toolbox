@@ -36,7 +36,7 @@ public class SwaggerSort {
     }
 
     private void sortDefaultParametersInPathDefinitions(Swagger swagger) {
-        swaggerStreams.pathsStream(swagger).forEach(path -> path.setParameters(sortedParameters(swagger, path.getParameters())));
+        swaggerStreams.pathDefinitionStream(swagger).forEach(path -> path.setParameters(sortedParameters(swagger, path.getParameters())));
     }
 
     private List<Parameter> sortedParameters(Swagger swagger, List<Parameter> parameters) {

@@ -25,6 +25,11 @@ public class SwaggerMerger_Test {
         assertThat("merging the same path with different operations should not be successful", !mergeResult().success());
     }
 
+//    @Test
+//    public void report_conflicting_path() throws Exception {
+//        assertThat(mergeResult().successOr(), is("/{variable|argument}/constant"));
+//    }
+
     private MergeResult mergeResult() {
         return swaggerMerger.merge(first.build(), second.build());
     }

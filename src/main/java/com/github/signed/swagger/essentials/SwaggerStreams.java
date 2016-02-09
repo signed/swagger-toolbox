@@ -17,11 +17,15 @@ import io.swagger.models.Tag;
 public class SwaggerStreams {
 
     public Stream<Operation> operationsStream(Swagger swagger) {
-        return pathsStream(swagger).flatMap(path -> path.getOperations().stream());
+        return pathDefinitionStream(swagger).flatMap(path -> path.getOperations().stream());
     }
 
-    public Stream<Path> pathsStream(Swagger swagger) {
+    public Stream<Path> pathDefinitionStream(Swagger swagger) {
         return paths(swagger).values().stream();
+    }
+
+    public Stream<String> pathStream(Swagger one) {
+        return paths(one).keySet().stream();
     }
 
     public Map<String, Path> paths(Swagger one) {

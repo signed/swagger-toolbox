@@ -45,7 +45,7 @@ public class SwaggerMerger {
     }
 
     private LinkedHashMap<String, Path> mergePathDefinitions(Swagger one, Swagger two) {
-        List<Pair<String, String>> conflictingPathDefinitions = swaggerStreams.paths(one).keySet().stream().
+        List<Pair<String, String>> conflictingPathDefinitions = swaggerStreams.pathStream(one).
                 filter(pathContainedInBooth(two))
                 .map(serializeBothModelElementsToJson(one, two, (swagger, s) -> swagger.getPaths().get(s)))
                 .filter(thoseWhoAreNotIdentical())
