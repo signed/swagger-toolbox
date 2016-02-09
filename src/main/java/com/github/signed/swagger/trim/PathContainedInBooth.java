@@ -1,20 +1,20 @@
 package com.github.signed.swagger.trim;
 
-import io.swagger.models.Swagger;
-
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+import io.swagger.models.Swagger;
+
 public class PathContainedInBooth {
 
-    public static Predicate<String> pathContainedInBooth(Swagger two){
+    public Predicate<String> pathContainedInBooth(Swagger two){
         return exposedPath -> two.getPaths().keySet().stream()
-                .map(PathContainedInBooth::unifyUrlTemplateVariableNames)
+                .map(this::unifyUrlTemplateVariableNames)
                 .collect(Collectors.toList())
                 .contains(unifyUrlTemplateVariableNames(exposedPath));
     }
 
-    private static String unifyUrlTemplateVariableNames(String url) {
+    private String unifyUrlTemplateVariableNames(String url) {
         return url.replaceAll("\\{[^\\}]+\\}", "{variable}");
     }
 }

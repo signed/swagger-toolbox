@@ -1,6 +1,5 @@
 package com.github.signed.swagger.merge;
 
-import static com.github.signed.swagger.trim.PathContainedInBooth.pathContainedInBooth;
 import static java.util.stream.Collectors.toList;
 
 import java.util.LinkedHashMap;
@@ -15,6 +14,7 @@ import org.apache.commons.lang3.tuple.Pair;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.github.signed.swagger.essentials.SwaggerStreams;
+import com.github.signed.swagger.trim.PathContainedInBooth;
 import com.google.common.collect.Maps;
 
 import io.swagger.models.Model;
@@ -26,6 +26,7 @@ import io.swagger.util.Json;
 public class SwaggerMerger {
 
     private final SwaggerStreams swaggerStreams = new SwaggerStreams();
+    private final PathContainedInBooth pathContainedInBooth = new PathContainedInBooth();
 
     public MergeResult merge(Swagger one, Swagger two) {
         try {
@@ -46,7 +47,7 @@ public class SwaggerMerger {
 
     private LinkedHashMap<String, Path> mergePathDefinitions(Swagger one, Swagger two) {
         List<Pair<String, String>> conflictingPathDefinitions = swaggerStreams.pathStream(one).
-            filter(pathContainedInBooth(two))
+            filter(pathContainedInBooth.pathContainedInBooth(two))
             .map(serializeBothModelElementsToJson(one, two, (swagger, s) -> swagger.getPaths().get(s)))
             .filter(thoseWhoAreNotIdentical())
             .collect(toList());
