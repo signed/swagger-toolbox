@@ -29,8 +29,8 @@ public class SwaggerMerger {
 
     public MergeResult merge(Swagger one, Swagger two){
         try {
-            LinkedHashMap<String, Path> mergedPaths = mergePathDefinitions(one, two);
-            LinkedHashMap<String, Model> mergedDefinitions = mergedModelDefinitions(one, two);
+            Map<String, Path> mergedPaths = mergePathDefinitions(one, two);
+            Map<String, Model> mergedDefinitions = mergedModelDefinitions(one, two);
             List<Tag> mergedTagDefinitions = mergedTagDefinitions(one, two);
 
             Swagger swagger = new Swagger();
