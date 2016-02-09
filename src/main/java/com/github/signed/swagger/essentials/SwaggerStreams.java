@@ -21,7 +21,11 @@ public class SwaggerStreams {
     }
 
     public Stream<Path> pathsStream(Swagger swagger) {
-        return ofNullable(swagger.getPaths()).orElse(emptyMap()).values().stream();
+        return paths(swagger).values().stream();
+    }
+
+    public Map<String, Path> paths(Swagger one) {
+        return ofNullable(one.getPaths()).orElse(emptyMap());
     }
 
     public Stream<Tag> tagsStream(Swagger swagger) {

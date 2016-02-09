@@ -1,8 +1,6 @@
 package com.github.signed.swagger.merge;
 
 import static com.github.signed.swagger.trim.PathContainedInBooth.pathContainedInBooth;
-import static java.util.Collections.emptyMap;
-import static java.util.Optional.ofNullable;
 import static java.util.stream.Collectors.toList;
 
 import java.util.LinkedHashMap;
@@ -47,7 +45,7 @@ public class SwaggerMerger {
     }
 
     private LinkedHashMap<String, Path> mergePathDefinitions(Swagger one, Swagger two) {
-        List<Pair<String, String>> conflictingPathDefinitions = ofNullable(one.getPaths()).orElse(emptyMap()).keySet().stream().
+        List<Pair<String, String>> conflictingPathDefinitions = swaggerStreams.paths(one).keySet().stream().
                 filter(pathContainedInBooth(two))
                 .map(serializeBothModelElementsToJson(one, two, (swagger, s) -> swagger.getPaths().get(s)))
                 .filter(thoseWhoAreNotIdentical())
@@ -58,8 +56,8 @@ public class SwaggerMerger {
         }
 
         LinkedHashMap<String, Path> mergedPaths = new LinkedHashMap<>();
-        mergedPaths.putAll(ofNullable(one.getPaths()).orElse(emptyMap()));
-        mergedPaths.putAll(ofNullable(two.getPaths()).orElse(emptyMap()));
+        mergedPaths.putAll(swaggerStreams.paths(one));
+        mergedPaths.putAll(swaggerStreams.paths(two));
         return mergedPaths;
     }
 
