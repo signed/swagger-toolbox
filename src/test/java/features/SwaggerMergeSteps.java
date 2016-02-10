@@ -12,7 +12,7 @@ import com.github.signed.swagger.essentials.SwaggerMatcher;
 import com.github.signed.swagger.essentials.SwaggerMother;
 import com.github.signed.swagger.merge.MergeResult;
 import com.github.signed.swagger.merge.SwaggerMergeException;
-import com.github.signed.swagger.merge.SwaggerMerger;
+import com.github.signed.swagger.merge.SwaggerMerge;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -22,7 +22,7 @@ import io.swagger.util.Json;
 
 public class SwaggerMergeSteps {
 
-    private final SwaggerMerger merger = new SwaggerMerger();
+    private final SwaggerMerge merger = new SwaggerMerge();
     private SwaggerBuilder first = SwaggerMother.emptyApiDefinition();
     private SwaggerBuilder second = SwaggerMother.emptyApiDefinition();
     private Swagger mergedApiDefinition;

@@ -8,11 +8,11 @@ import org.junit.Test;
 import com.github.signed.swagger.essentials.SwaggerBuilder;
 import com.github.signed.swagger.essentials.SwaggerMother;
 
-public class SwaggerMerger_Test {
+public class SwaggerMerge_Test {
 
     private final SwaggerBuilder first = SwaggerMother.emptyApiDefinition();
     private final SwaggerBuilder second = SwaggerMother.emptyApiDefinition();
-    private final SwaggerMerger swaggerMerger = new SwaggerMerger();
+    private final SwaggerMerge swaggerMerge = new SwaggerMerge();
 
     @Before
     public void setUp() throws Exception {
@@ -31,7 +31,7 @@ public class SwaggerMerger_Test {
 //    }
 
     private MergeResult mergeResult() {
-        return swaggerMerger.merge(first.build(), second.build());
+        return swaggerMerge.merge(first.build(), second.build());
     }
 
 }

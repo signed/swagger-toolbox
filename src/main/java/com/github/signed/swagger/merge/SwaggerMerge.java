@@ -23,7 +23,7 @@ import io.swagger.models.Swagger;
 import io.swagger.models.Tag;
 import io.swagger.util.Json;
 
-public class SwaggerMerger {
+public class SwaggerMerge {
 
     private final SwaggerStreams swaggerStreams = new SwaggerStreams();
     private final PathContainedInBooth pathContainedInBooth = new PathContainedInBooth();

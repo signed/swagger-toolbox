@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 
 import org.junit.Test;
 
-import com.github.signed.swagger.merge.SwaggerMerger;
+import com.github.signed.swagger.merge.SwaggerMerge;
 import com.github.signed.swagger.reduce.SwaggerReduce;
 import com.github.signed.swagger.trim.SwaggerTrim;
 
@@ -27,7 +27,7 @@ public class Integration_Test {
     private final SwaggerParser parser = new SwaggerParser();
     private final SwaggerReduce reduce = new SwaggerReduce("public");
     private final SwaggerTrim trim = new SwaggerTrim();
-    private final SwaggerMerger merge = new SwaggerMerger();
+    private final SwaggerMerge merge = new SwaggerMerge();
 
     @Test
     public void just_reduce() throws Exception {
