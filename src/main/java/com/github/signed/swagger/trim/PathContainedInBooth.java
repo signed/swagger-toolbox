@@ -1,7 +1,6 @@
 package com.github.signed.swagger.trim;
 
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 import com.github.signed.swagger.essentials.SwaggerStreams;
 
@@ -12,10 +11,8 @@ public class PathContainedInBooth {
 
     public Predicate<String> pathContainedInBooth(Swagger two){
         return exposedPath -> {
-            return swaggerStreams.pathStream(two)
-                .map(ToolboxPath::unifyUrlTemplateVariableNames)
-                .collect(Collectors.toList())
-                .contains(ToolboxPath.unifyUrlTemplateVariableNames(exposedPath));
+            ToolboxPath toolboxPath = new ToolboxPath(exposedPath);
+            return swaggerStreams.pathStream(two).map(ToolboxPath::new).anyMatch(toolboxPath::referenceSameResource);
         };
     }
 
