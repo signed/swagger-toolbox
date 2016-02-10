@@ -109,21 +109,13 @@ public class SwaggerMerge {
     }
 
     private Function<ToolboxPath, Pair<String, String>> serializeBothModelElementsToJson2(Swagger one, Swagger two, BiFunction<Swagger, String, Object> extractor) {
-        return identifier -> {
-            Object _1st = extractor.apply(one, identifier.asString());
-            Object _2nd = extractor.apply(two, identifier.asString());
-            try {
-                return Pair.of(Json.mapper().writeValueAsString(_1st), Json.mapper().writeValueAsString(_2nd));
-            } catch (JsonProcessingException e) {
-                throw new RuntimeException();
-            }
-        };
+        return toolboxPath -> serializeBothModelElementsToJson(one, two, extractor).apply(toolboxPath.asString());
     }
 
     private Function<String, Pair<String, String>> serializeBothModelElementsToJson(Swagger one, Swagger two, BiFunction<Swagger, String, Object> extractor) {
-        return identifier -> {
-            Object _1st = extractor.apply(one, identifier);
-            Object _2nd = extractor.apply(two, identifier);
+        return stringIdentifier -> {
+            Object _1st = extractor.apply(one, stringIdentifier);
+            Object _2nd = extractor.apply(two, stringIdentifier);
             try {
                 return Pair.of(Json.mapper().writeValueAsString(_1st), Json.mapper().writeValueAsString(_2nd));
             } catch (JsonProcessingException e) {
