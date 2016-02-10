@@ -26,8 +26,8 @@ public class SwaggerStreams {
         return paths(swagger).values().stream();
     }
 
-    public Stream<ToolboxPath> toolboxPathStream(Swagger two) {
-        return pathStream(two).map(ToolboxPath::new);
+    public Stream<ToolboxPath> toolboxPathStream(Swagger swagger) {
+        return pathStream(swagger).map(ToolboxPath::new);
     }
 
     public Stream<String> pathStream(Swagger one) {

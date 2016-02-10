@@ -14,7 +14,7 @@ import org.apache.commons.lang3.tuple.Pair;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.github.signed.swagger.essentials.SwaggerStreams;
-import com.github.signed.swagger.trim.PathContainedInBooth;
+import com.github.signed.swagger.trim.ToolboxPath;
 import com.google.common.collect.Maps;
 
 import io.swagger.models.Model;
@@ -26,7 +26,6 @@ import io.swagger.util.Json;
 public class SwaggerMerge {
 
     private final SwaggerStreams swaggerStreams = new SwaggerStreams();
-    private final PathContainedInBooth pathContainedInBooth = new PathContainedInBooth();
 
     public MergeResult merge(Swagger one, Swagger two) {
         try {
@@ -46,9 +45,9 @@ public class SwaggerMerge {
     }
 
     private LinkedHashMap<String, Path> mergePathDefinitions(Swagger one, Swagger two) {
-        List<Pair<String, String>> conflictingPathDefinitions = swaggerStreams.pathStream(one).
-            filter(pathContainedInBooth.pathContainedInBooth(two))
-            .map(serializeBothModelElementsToJson(one, two, (swagger, s) -> swagger.getPaths().get(s)))
+        List<Pair<String, String>> conflictingPathDefinitions = swaggerStreams.toolboxPathStream(one)
+            .filter(p1 -> swaggerStreams.toolboxPathStream(two).anyMatch(p2 -> p2.referenceSameResource(p1)))
+            .map(serializeBothModelElementsToJson2(one, two, (swagger, s) -> swagger.getPaths().get(s)))
             .filter(thoseWhoAreNotIdentical())
             .collect(toList());
 
@@ -107,6 +106,18 @@ public class SwaggerMerge {
 
     private Predicate<Pair<String, String>> thoseWhoAreNotIdentical() {
         return jsonPair -> !jsonPair.getLeft().equals(jsonPair.getRight());
+    }
+
+    private Function<ToolboxPath, Pair<String, String>> serializeBothModelElementsToJson2(Swagger one, Swagger two, BiFunction<Swagger, String, Object> extractor) {
+        return identifier -> {
+            Object _1st = extractor.apply(one, identifier.asString());
+            Object _2nd = extractor.apply(two, identifier.asString());
+            try {
+                return Pair.of(Json.mapper().writeValueAsString(_1st), Json.mapper().writeValueAsString(_2nd));
+            } catch (JsonProcessingException e) {
+                throw new RuntimeException();
+            }
+        };
     }
 
     private Function<String, Pair<String, String>> serializeBothModelElementsToJson(Swagger one, Swagger two, BiFunction<Swagger, String, Object> extractor) {
