@@ -12,7 +12,7 @@ public class PathContainedInBooth {
     public Predicate<String> pathContainedInBooth(Swagger two){
         return exposedPath -> {
             ToolboxPath toolboxPath = new ToolboxPath(exposedPath);
-            return swaggerStreams.pathStream(two).map(ToolboxPath::new).anyMatch(toolboxPath::referenceSameResource);
+            return swaggerStreams.toolboxPathStream(two).anyMatch(toolboxPath::referenceSameResource);
         };
     }
 

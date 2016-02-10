@@ -7,6 +7,8 @@ import static java.util.Optional.ofNullable;
 import java.util.Map;
 import java.util.stream.Stream;
 
+import com.github.signed.swagger.trim.ToolboxPath;
+
 import io.swagger.models.Model;
 import io.swagger.models.Operation;
 import io.swagger.models.Path;
@@ -22,6 +24,10 @@ public class SwaggerStreams {
 
     public Stream<Path> pathDefinitionStream(Swagger swagger) {
         return paths(swagger).values().stream();
+    }
+
+    public Stream<ToolboxPath> toolboxPathStream(Swagger two) {
+        return pathStream(two).map(ToolboxPath::new);
     }
 
     public Stream<String> pathStream(Swagger one) {
