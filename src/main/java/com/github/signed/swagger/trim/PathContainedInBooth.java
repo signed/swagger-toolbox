@@ -11,13 +11,12 @@ public class PathContainedInBooth {
     private final SwaggerStreams swaggerStreams = new SwaggerStreams();
 
     public Predicate<String> pathContainedInBooth(Swagger two){
-        return exposedPath -> swaggerStreams.pathStream(two)
-                .map(this::unifyUrlTemplateVariableNames)
+        return exposedPath -> {
+            return swaggerStreams.pathStream(two)
+                .map(ToolboxPath::unifyUrlTemplateVariableNames)
                 .collect(Collectors.toList())
-                .contains(unifyUrlTemplateVariableNames(exposedPath));
+                .contains(ToolboxPath.unifyUrlTemplateVariableNames(exposedPath));
+        };
     }
 
-    private String unifyUrlTemplateVariableNames(String url) {
-        return url.replaceAll("\\{[^\\}]+\\}", "{variable}");
-    }
 }

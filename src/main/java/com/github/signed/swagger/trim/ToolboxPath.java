@@ -2,6 +2,10 @@ package com.github.signed.swagger.trim;
 
 public class ToolboxPath {
 
+    public static String unifyUrlTemplateVariableNames(String url) {
+        return url.replaceAll("\\{[^\\}]+\\}", "{variable}");
+    }
+
     private final String path;
 
     public ToolboxPath(String path) {
@@ -13,6 +17,6 @@ public class ToolboxPath {
     }
 
     public boolean referenceSameResource(ToolboxPath toolboxPath) {
-        return this.path.equals(toolboxPath.path);
+        return unifyUrlTemplateVariableNames(this.path).equals(unifyUrlTemplateVariableNames(toolboxPath.path));
     }
 }
