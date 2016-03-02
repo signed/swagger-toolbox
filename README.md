@@ -5,6 +5,7 @@
 [![Travis](https://img.shields.io/travis/signed/swagger-toolbox/master.svg?style=plastic)](https://travis-ci.org/signed/swagger-toolbox)
 [![Coverage Status](https://coveralls.io/repos/github/signed/swagger-toolbox/badge.svg?branch=master)](https://coveralls.io/github/signed/swagger-toolbox?branch=master)
 [![Dependency Status](https://www.versioneye.com/user/projects/56d74b62d71695003886c338/badge.svg?style=flat)](https://www.versioneye.com/user/projects/56d74b62d71695003886c338)
+[![Codacy Badge](https://api.codacy.com/project/badge/grade/bd65bb851ff24fe5b3b39a56a6d2ad2f)](https://www.codacy.com/app/thomas-heilbronner/swagger-toolbox)
 
 Small library providing tools to manipulate swagger specifications in java.
 
