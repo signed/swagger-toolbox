@@ -1,6 +1,6 @@
 [![GitHub license](https://img.shields.io/badge/license-Apache%202-blue.svg?style=plastic)](https://raw.githubusercontent.com/signed/swagger-toolbox/master/LICENSE)
-[![Travis](https://img.shields.io/travis/signed/swagger-toolbox/master.svg?style=plastic)]()
-[![Maven Central](https://img.shields.io/maven-central/v/com.github.signed.swagger/swagger-toolbox.svg?style=plastic)]()
+[![Travis](https://img.shields.io/travis/signed/swagger-toolbox/master.svg?style=plastic)](https://travis-ci.org/signed/swagger-toolbox)
+[![Maven Central](https://img.shields.io/maven-central/v/com.github.signed.swagger/swagger-toolbox.svg?style=plastic)](https://maven-badges.herokuapp.com/maven-central/com.github.signed.swagger/swagger-toolbox)
 [![GitHub issues](https://img.shields.io/github/issues/signed/swagger-toolbox.svg?style=plastic)](https://github.com/signed/swagger-toolbox/issues)
 [![Coverage Status](https://coveralls.io/repos/github/signed/swagger-toolbox/badge.svg?branch=master)](https://coveralls.io/github/signed/swagger-toolbox?branch=master)
 
