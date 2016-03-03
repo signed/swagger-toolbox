@@ -17,6 +17,7 @@ cobertura.coverageFormats = ['html', 'xml']
 
 
 apply plugin: 'java'
+apply plugin: 'pmd'
 
 if (project.hasProperty('release')) {
     apply from: "$rootDir/gradle/buildscript/central.gradle"

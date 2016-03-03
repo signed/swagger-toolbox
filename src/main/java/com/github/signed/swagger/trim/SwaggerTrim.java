@@ -84,7 +84,7 @@ public class SwaggerTrim {
     private void removeNotReferencedTagsIn(Swagger swagger) {
         Set<String> tagReferences = swaggerStreams.pathDefinitionStream(swagger).map(allTagsReferencedInPath()).flatMap(Set::stream).collect(toSet());
         List<Tag> referencedTagDefinitions = ofNullable(swagger.getTags()).orElse(emptyList()).stream().filter(tag -> tagReferences.contains(tag.getName())).collect(Collectors.toList());
-        swagger.setTags((referencedTagDefinitions.isEmpty()) ? null : referencedTagDefinitions);
+        swagger.setTags(referencedTagDefinitions.isEmpty() ? null : referencedTagDefinitions);
     }
 
     private void removeNotReferencedModelDefinitionsIn(Swagger swagger) {
