@@ -11,8 +11,8 @@ public class ValidationResult {
         this.messages = messages;
     }
 
-    public void writeTo(PrintStream out) {
-        messages.forEach(message -> message.writeTo(out));
+    public void writeTo(PrintStream printStream) {
+        messages.forEach(message -> message.writeTo(printStream));
     }
 
     public boolean hasPassed() {

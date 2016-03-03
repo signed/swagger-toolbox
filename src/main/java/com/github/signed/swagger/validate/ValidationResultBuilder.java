@@ -10,8 +10,8 @@ public class ValidationResultBuilder {
 
     private final List<ValidationMessageBuilder> messages = Lists.newArrayList();
 
-    public void schemaValidationThrowAnExceptionFailed(Exception ex) {
-        ex.printStackTrace();
+    public void schemaValidationThrowAnExceptionFailed(Exception exception) {
+        exception.printStackTrace();
     }
 
     public ValidationMessageBuilder message() {
