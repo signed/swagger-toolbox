@@ -2,7 +2,7 @@
 [![Maven Central](https://img.shields.io/maven-central/v/com.github.signed.swagger/swagger-toolbox.svg?style=plastic)](https://maven-badges.herokuapp.com/maven-central/com.github.signed.swagger/swagger-toolbox)
 [![GitHub issues](https://img.shields.io/github/issues/signed/swagger-toolbox.svg?style=plastic)](https://github.com/signed/swagger-toolbox/issues)   
 [![Travis](https://img.shields.io/travis/signed/swagger-toolbox/master.svg?style=plastic)](https://travis-ci.org/signed/swagger-toolbox)
-[![Codacy Badge](https://api.codacy.com/project/badge/grade/bd65bb851ff24fe5b3b39a56a6d2ad2f)](https://www.codacy.com/app/thomas-heilbronner/swagger-toolbox)
+[![Codacy](https://img.shields.io/codacy/bd65bb851ff24fe5b3b39a56a6d2ad2f.svg?style=plastic)](https://www.codacy.com/app/thomas-heilbronner/swagger-toolbox)
 [![Coveralls](https://img.shields.io/coveralls/signed/swagger-toolbox.svg?style=plastic)](https://coveralls.io/github/signed/swagger-toolbox?branch=master)
 [![Coverage Status](https://img.shields.io/codecov/c/github/signed/swagger-toolbox.svg?style=plastic)](https://codecov.io/github/signed/swagger-toolbox)
 
