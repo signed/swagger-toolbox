@@ -5,6 +5,7 @@ import static java.lang.String.format;
 import java.io.PrintStream;
 
 public class ValidationMessage {
+
     public final String level;
     public final String message;
 
@@ -15,9 +16,5 @@ public class ValidationMessage {
 
     public void writeTo(PrintStream out) {
         out.println(format("[%s] %s", level, this.message));
-    }
-
-    public static void writeTo(ValidationMessage validationMessage) {
-
     }
 }
