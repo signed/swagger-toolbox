@@ -66,7 +66,7 @@ public class ParameterBuilder {
     public Parameter build() {
         if (bodyParameter) {
             BodyParameter bodyParameter = new BodyParameter();
-            maybeReferenceToADefinition.ifPresent(id -> bodyParameter.setSchema(new RefModel(id)));
+            maybeReferenceToADefinition.ifPresent(referenceIdentifier -> bodyParameter.setSchema(new RefModel(referenceIdentifier)));
             maybeAName.ifPresent(bodyParameter::setName);
             return bodyParameter;
         }

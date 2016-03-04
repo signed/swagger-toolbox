@@ -31,7 +31,7 @@ public class MergeResult {
         return successOr(new MergeFailureCause(){
 
             @Override
-            public void conflict(SwaggerMergeException ex) {
+            public void conflict(SwaggerMergeException exception) {
 
             }
         });
