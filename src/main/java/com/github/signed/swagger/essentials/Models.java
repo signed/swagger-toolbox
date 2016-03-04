@@ -34,7 +34,7 @@ public class Models {
             ArrayModel arrayModel = (ArrayModel) model;
             return properties.definitionReferencesIn(arrayModel.getItems());
         } else {
-            throw new RuntimeException("still work to do");
+            throw new UnsupportedOperationException("still work to do for " + model);
         }
     }
 
