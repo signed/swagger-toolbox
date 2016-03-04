@@ -59,10 +59,10 @@ public class SwaggerBuilder {
         Swagger swagger = new Swagger();
         swagger.setInfo(infoBuilder.build());
         tags.forEach(tagDefinitionBuilder -> swagger.addTag(tagDefinitionBuilder.build()));
-        paths.forEach((s, pathBuilder) -> swagger.path(s, pathBuilder.build()));
-        definitions.forEach((s, modelBuilder) -> swagger.addDefinition(s, modelBuilder.build()));
-        parameters.forEach((s, parameterBuilder) -> swagger.addParameter(s, parameterBuilder.build()));
-        responses.forEach((s, responseBuilder) -> swagger.response(s, responseBuilder.build()));
+        paths.forEach((path, pathBuilder) -> swagger.path(path, pathBuilder.build()));
+        definitions.forEach((definitionIdentifier, modelBuilder) -> swagger.addDefinition(definitionIdentifier, modelBuilder.build()));
+        parameters.forEach((parameterIdentifier, parameterBuilder) -> swagger.addParameter(parameterIdentifier, parameterBuilder.build()));
+        responses.forEach((responseIdentifier, responseBuilder) -> swagger.response(responseIdentifier, responseBuilder.build()));
         return swagger;
     }
 }
