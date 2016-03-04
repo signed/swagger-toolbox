@@ -35,6 +35,14 @@ targetCompatibility = 1.8
 group = 'com.github.signed.swagger'
 version = '0.2.0-SNAPSHOT'
 
+pmd {
+    consoleOutput = true
+    ignoreFailures = true
+    reportsDir = file("$project.buildDir/reports/pmd")
+    ruleSetFiles = files("config/pmd/ruleset.xml")
+    toolVersion = '5.4.1'
+}
+
 dependencies {
     compile(
         'io.swagger:swagger-parser:1.0.17'
