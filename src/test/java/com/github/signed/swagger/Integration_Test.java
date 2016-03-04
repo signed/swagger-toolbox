@@ -32,7 +32,7 @@ public class Integration_Test {
     @Test
     public void just_reduce() {
         Swagger petShop = parser.read(first);
-        petShop.getPaths().values().stream().map(Path::getOperations).flatMap(Collection::stream).forEach(a -> a.tag(MarkerTag));
+        petShop.getPaths().values().stream().map(Path::getOperations).flatMap(Collection::stream).forEach(operation -> operation.tag(MarkerTag));
         reduce.reduce(petShop);
 
         Yaml.prettyPrint(petShop);
@@ -42,7 +42,7 @@ public class Integration_Test {
     @Test
     public void reduce_trim() {
         Swagger petShop = parser.read(first);
-        petShop.getPaths().values().stream().map(Path::getOperations).flatMap(Collection::stream).forEach(a -> a.tag(MarkerTag));
+        petShop.getPaths().values().stream().map(Path::getOperations).flatMap(Collection::stream).forEach(operation -> operation.tag(MarkerTag));
         reduce.reduce(petShop);
 
         Yaml.prettyPrint(petShop);
@@ -56,7 +56,7 @@ public class Integration_Test {
     @Test
     public void reduce_trim_merge() {
         Swagger _1st = parser.read(first);
-        _1st.getPaths().values().stream().map(Path::getOperations).flatMap(Collection::stream).forEach(a -> a.tag(MarkerTag));
+        _1st.getPaths().values().stream().map(Path::getOperations).flatMap(Collection::stream).forEach(operation -> operation.tag(MarkerTag));
         Swagger _2nd = parser.read(second);
         List<Swagger> collect = Stream.of(_1st, _2nd).map(reduce::reduce).map(trim::trim).collect(Collectors.toList());
         Swagger result = this.merge.merge(collect.get(0), collect.get(1)).swagger();
