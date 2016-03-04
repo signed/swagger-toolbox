@@ -18,7 +18,6 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.swagger.models.Swagger;
-import io.swagger.util.Json;
 
 public class SwaggerMergeSteps {
 
@@ -83,13 +82,10 @@ public class SwaggerMergeSteps {
     public void merged() throws Throwable {
         Swagger first = this.first.build();
         Swagger second = this.second.build();
-        System.out.println(Json.pretty(first));
-        System.out.println(Json.pretty(second));
         MergeResult mergeResult = merger.merge(first, second);
         if (mergeResult.successOr(ex -> mergeException = ex)) {
             mergedApiDefinition = mergeResult.swagger();
         }
-        System.out.println(Json.pretty(mergedApiDefinition));
     }
 
     @Then("^the path elements of booth are in the resulting swagger api description$")
