@@ -30,7 +30,7 @@ public class Integration_Test {
     private final SwaggerMerge merge = new SwaggerMerge();
 
     @Test
-    public void just_reduce() throws Exception {
+    public void just_reduce() {
         Swagger petShop = parser.read(first);
         petShop.getPaths().values().stream().map(Path::getOperations).flatMap(Collection::stream).forEach(a -> a.tag(MarkerTag));
         reduce.reduce(petShop);
@@ -40,7 +40,7 @@ public class Integration_Test {
     }
 
     @Test
-    public void reduce_trim() throws Exception {
+    public void reduce_trim() {
         Swagger petShop = parser.read(first);
         petShop.getPaths().values().stream().map(Path::getOperations).flatMap(Collection::stream).forEach(a -> a.tag(MarkerTag));
         reduce.reduce(petShop);
@@ -54,7 +54,7 @@ public class Integration_Test {
     }
 
     @Test
-    public void reduce_trim_merge() throws Exception {
+    public void reduce_trim_merge() {
         Swagger _1st = parser.read(first);
         _1st.getPaths().values().stream().map(Path::getOperations).flatMap(Collection::stream).forEach(a -> a.tag(MarkerTag));
         Swagger _2nd = parser.read(second);
@@ -66,7 +66,7 @@ public class Integration_Test {
     }
 
     @Test
-    public void model_with_composition() throws Exception {
+    public void model_with_composition() {
         Swagger swagger = parser.read(TestFiles.Yaml.modelWithComposition());
         Swagger trim = this.trim.trim(swagger);
         Yaml.prettyPrint(trim);

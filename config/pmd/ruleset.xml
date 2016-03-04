@@ -28,6 +28,7 @@
     <rule ref="rulesets/java/naming.xml">
         <exclude name="LongVariable"/>
         <exclude name="MethodNamingConventions"/>
+        <exclude name="VariableNamingConventions"/>
     </rule>
     <rule ref="rulesets/java/optimizations.xml">
         <exclude name="LocalVariableCouldBeFinal"/>

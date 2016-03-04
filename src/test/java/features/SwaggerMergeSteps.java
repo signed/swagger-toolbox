@@ -1,23 +1,20 @@
 package features;
 
 
-import static com.github.signed.swagger.essentials.SwaggerMatcher.hasPathDefinitionsFor;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.hasSize;
-import static org.hamcrest.Matchers.not;
-import static org.hamcrest.Matchers.nullValue;
-
 import com.github.signed.swagger.essentials.SwaggerBuilder;
 import com.github.signed.swagger.essentials.SwaggerMatcher;
 import com.github.signed.swagger.essentials.SwaggerMother;
 import com.github.signed.swagger.merge.MergeResult;
-import com.github.signed.swagger.merge.SwaggerMergeException;
 import com.github.signed.swagger.merge.SwaggerMerge;
-
+import com.github.signed.swagger.merge.SwaggerMergeException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.swagger.models.Swagger;
+
+import static com.github.signed.swagger.essentials.SwaggerMatcher.hasPathDefinitionsFor;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 
 public class SwaggerMergeSteps {
 
