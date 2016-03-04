@@ -5,14 +5,12 @@ import static com.google.common.collect.Lists.newArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
-import com.google.common.collect.Lists;
-
 import io.swagger.models.Operation;
 
 public class OperationBuilder {
     private final List<String> tags = newArrayList();
-    private final List<ParameterBuilder> parameters = Lists.newArrayList();
-    private final List<Consumer<Operation>> responses = Lists.newArrayList();
+    private final List<ParameterBuilder> parameters = newArrayList();
+    private final List<Consumer<Operation>> responses = newArrayList();
 
     public OperationBuilder withTag(String tag) {
         tags.add(tag);
@@ -39,7 +37,7 @@ public class OperationBuilder {
     public Operation build() {
         Operation operation = new Operation();
         if (!tags.isEmpty()) {
-            operation.setTags(Lists.newArrayList(tags));
+            operation.setTags(newArrayList(tags));
         }
         parameters.forEach(parameterBuilder -> operation.addParameter(parameterBuilder.build()));
         responses.forEach(response -> response.accept(operation));
