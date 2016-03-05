@@ -1,41 +1,26 @@
 package features;
 
-import static com.github.signed.swagger.essentials.ParameterMother.anyParameter;
-import static com.github.signed.swagger.essentials.ParameterMother.anyParameterName;
-import static com.github.signed.swagger.essentials.ParameterMother.anyParameterReferencingParameterDefinition;
-import static com.github.signed.swagger.essentials.ParameterMother.anyParameterReferencingModelDefinition;
-import static com.github.signed.swagger.essentials.ParameterMother.referencedParameterIdentifier;
-import static com.github.signed.swagger.essentials.PathMother.anyPath;
-import static com.github.signed.swagger.essentials.ResponseMother.anyHttpStatusCode;
-import static com.github.signed.swagger.essentials.ResponseMother.anyResponseDefinition;
-import static com.github.signed.swagger.essentials.ResponseMother.anyResponseReferencingModelElement;
-import static com.github.signed.swagger.essentials.ResponseMother.anyResponseReferencingResponseDefinition;
-import static com.github.signed.swagger.essentials.ResponseMother.referencedResponseIdentifier;
-import static com.github.signed.swagger.essentials.SwaggerMatcher.hasModelDefinitionsFor;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.contains;
-import static org.hamcrest.Matchers.hasKey;
-import static org.hamcrest.Matchers.not;
-import static org.hamcrest.Matchers.nullValue;
-
-import org.hamcrest.Matchers;
-
-import com.github.signed.swagger.essentials.ResponseMother;
 import com.github.signed.swagger.essentials.SwaggerBuilder;
-import com.github.signed.swagger.essentials.SwaggerMother;
 import com.github.signed.swagger.essentials.TagDefinitionBuilder;
 import com.github.signed.swagger.trim.SwaggerTrim;
-
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.swagger.models.Swagger;
 import io.swagger.util.Yaml;
 
+import static com.github.signed.swagger.essentials.ParameterMother.*;
+import static com.github.signed.swagger.essentials.PathMother.anyPath;
+import static com.github.signed.swagger.essentials.ResponseMother.*;
+import static com.github.signed.swagger.essentials.SwaggerMatcher.hasModelDefinitionsFor;
+import static com.github.signed.swagger.essentials.SwaggerMother.emptyApiDefinition;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
+
 public class SwaggerTrimSteps {
 
     public static final String REFERENCED_MODEL_ELEMENT = "referenced-model-element";
-    private final SwaggerBuilder swagger = SwaggerMother.emptyApiDefinition();
+    private final SwaggerBuilder swagger = emptyApiDefinition();
     private Swagger trimmedSwagger;
 
     @Given("^a tag definition that is not referenced in an operation$")
@@ -114,7 +99,7 @@ public class SwaggerTrimSteps {
     @Given("^a model definition that is referenced in a response definition$")
     public void a_model_definition_that_is_referenced_in_response_definition() throws Throwable {
         swagger.withModelDefinition(REFERENCED_MODEL_ELEMENT);
-        swagger.withResponseDefinition(referencedResponseIdentifier(), ResponseMother.anyResponseReferencingModelElement(REFERENCED_MODEL_ELEMENT));
+        swagger.withResponseDefinition(referencedResponseIdentifier(), anyResponseReferencingModelElement(REFERENCED_MODEL_ELEMENT));
     }
 
     @Given("^the response definition is referenced anywhere$")
@@ -130,7 +115,7 @@ public class SwaggerTrimSteps {
     @Given("^a response definition that is referenced in any operation$")
     public void a_response_definition_that_is_not_referenced_in_any_operation() throws Throwable {
         swagger.withResponseDefinition(referencedResponseIdentifier(), anyResponseDefinition());
-        swagger.withPath(anyPath()).withPost().withResponse(ResponseMother.anyHttpStatusCode(), anyResponseReferencingResponseDefinition(referencedResponseIdentifier()));
+        swagger.withPath(anyPath()).withPost().withResponse(anyHttpStatusCode(), anyResponseReferencingResponseDefinition(referencedResponseIdentifier()));
     }
 
     @When("^trimmed$")
@@ -158,7 +143,7 @@ public class SwaggerTrimSteps {
 
     @Then("^the model definition is removed$")
     public void the_model_definition_is_removed() throws Throwable {
-        assertThat(trimmedSwagger.getDefinitions(), Matchers.nullValue());
+        assertThat(trimmedSwagger.getDefinitions(), nullValue());
     }
 
     @Then("^the model definition is still present$")

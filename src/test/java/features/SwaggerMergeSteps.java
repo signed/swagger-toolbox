@@ -80,7 +80,7 @@ public class SwaggerMergeSteps {
         Swagger first = this.first.build();
         Swagger second = this.second.build();
         MergeResult mergeResult = merger.merge(first, second);
-        if (mergeResult.successOr(ex -> mergeException = ex)) {
+        if (mergeResult.successOr(exception -> mergeException = exception)) {
             mergedApiDefinition = mergeResult.swagger();
         }
     }
