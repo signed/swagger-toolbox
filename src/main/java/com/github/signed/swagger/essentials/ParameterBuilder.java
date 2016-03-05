@@ -1,15 +1,11 @@
 package com.github.signed.swagger.essentials;
 
-import static java.lang.Boolean.TRUE;
+import io.swagger.models.RefModel;
+import io.swagger.models.parameters.*;
 
 import java.util.Optional;
 
-import io.swagger.models.RefModel;
-import io.swagger.models.parameters.BodyParameter;
-import io.swagger.models.parameters.HeaderParameter;
-import io.swagger.models.parameters.Parameter;
-import io.swagger.models.parameters.PathParameter;
-import io.swagger.models.parameters.RefParameter;
+import static java.lang.Boolean.TRUE;
 
 public class ParameterBuilder {
     private Optional<String> maybeReferenceToADefinition = Optional.empty();
@@ -90,6 +86,6 @@ public class ParameterBuilder {
             pathParameter.setType(maybeType.get());
             return pathParameter;
         }
-        throw new RuntimeException("Where do you want this parameter to be?");
+        throw new UnsupportedOperationException("Where do you want this parameter to be?");
     }
 }

@@ -1,6 +1,15 @@
 package com.github.signed.swagger.merge;
 
-import static java.util.stream.Collectors.toList;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.github.signed.swagger.essentials.SwaggerStreams;
+import com.github.signed.swagger.trim.ToolboxPath;
+import com.google.common.collect.Maps;
+import io.swagger.models.Model;
+import io.swagger.models.Path;
+import io.swagger.models.Swagger;
+import io.swagger.models.Tag;
+import io.swagger.util.Json;
+import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -10,18 +19,7 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import org.apache.commons.lang3.tuple.Pair;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.github.signed.swagger.essentials.SwaggerStreams;
-import com.github.signed.swagger.trim.ToolboxPath;
-import com.google.common.collect.Maps;
-
-import io.swagger.models.Model;
-import io.swagger.models.Path;
-import io.swagger.models.Swagger;
-import io.swagger.models.Tag;
-import io.swagger.util.Json;
+import static java.util.stream.Collectors.toList;
 
 public class SwaggerMerge {
 
@@ -39,15 +37,15 @@ public class SwaggerMerge {
             swagger.setTags(mergedTagDefinitions.isEmpty() ? null : mergedTagDefinitions);
 
             return MergeResult.success(swagger);
-        } catch (SwaggerMergeException ex) {
-            return MergeResult.failed(null, (mergeFailureCause) -> mergeFailureCause.conflict(ex));
+        } catch (SwaggerMergeException exception) {
+            return MergeResult.failed(null, (mergeFailureCause) -> mergeFailureCause.conflict(exception));
         }
     }
 
-    private LinkedHashMap<String, Path> mergePathDefinitions(Swagger one, Swagger two) {
+    private Map<String, Path> mergePathDefinitions(Swagger one, Swagger two) {
         List<Pair<String, String>> conflictingPathDefinitions = swaggerStreams.toolboxPathStream(one)
-            .filter(p1 -> swaggerStreams.toolboxPathStream(two).anyMatch(p2 -> p2.referenceSameResource(p1)))
-            .map(serializeBothModelElementsToJson2(one, two, (swagger, s) -> swagger.getPaths().get(s)))
+            .filter(p1 -> swaggerStreams.toolboxPathStream(two).anyMatch(path -> path.referenceSameResource(p1)))
+            .map(serializeBothModelElementsToJson2(one, two, (swagger, path) -> swagger.getPaths().get(path)))
             .filter(thoseWhoAreNotIdentical())
             .collect(toList());
 
@@ -62,10 +60,10 @@ public class SwaggerMerge {
         return mergedPaths;
     }
 
-    private LinkedHashMap<String, Model> mergedModelDefinitions(Swagger one, Swagger two) {
+    private Map<String, Model> mergedModelDefinitions(Swagger one, Swagger two) {
         List<Pair<String, String>> conflictingModelDefinition = swaggerStreams.definitions(one).keySet().stream().
             filter(definitionsContainedInBooth(two))
-            .map(serializeBothModelElementsToJson(one, two, (swagger, s) -> swagger.getDefinitions().get(s)))
+            .map(serializeBothModelElementsToJson(one, two, (swagger, definitionIdentifier) -> swagger.getDefinitions().get(definitionIdentifier)))
             .filter(thoseWhoAreNotIdentical())
             .collect(toList());
 
