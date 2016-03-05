@@ -78,8 +78,8 @@ public class SwaggerSort_Test {
         String path = anyPath();
 
         PathBuilder pathBuilder = builder.withPath(path);
-        pathBuilder.withParameterForAllOperations("z", ParameterMother.anyParameterThatCanOccurMultipleTimesInASingleOperation());
-        pathBuilder.withParameterForAllOperations(ParameterMother.anyParameterReferencingParameterDefinition(parameterIdentifier));
+        pathBuilder.withParameterForAllOperations("z", anyParameterThatCanOccurMultipleTimesInASingleOperation());
+        pathBuilder.withParameterForAllOperations(anyParameterReferencingParameterDefinition(parameterIdentifier));
 
         List<Parameter> parameters = sort().getPath(path).getParameters();
 

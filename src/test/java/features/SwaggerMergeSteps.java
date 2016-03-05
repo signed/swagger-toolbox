@@ -19,8 +19,8 @@ import static org.hamcrest.Matchers.*;
 public class SwaggerMergeSteps {
 
     private final SwaggerMerge merger = new SwaggerMerge();
-    private SwaggerBuilder first = SwaggerMother.emptyApiDefinition();
-    private SwaggerBuilder second = SwaggerMother.emptyApiDefinition();
+    private final SwaggerBuilder first = SwaggerMother.emptyApiDefinition();
+    private final SwaggerBuilder second = SwaggerMother.emptyApiDefinition();
     private Swagger mergedApiDefinition;
     private SwaggerMergeException mergeException;
 

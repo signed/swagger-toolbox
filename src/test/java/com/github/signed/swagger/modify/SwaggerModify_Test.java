@@ -17,7 +17,7 @@ public class SwaggerModify_Test {
     private final SwaggerModify swaggerModify = new SwaggerModify();
     private final String path = anyPath();
     private final OperationIdentifier identifier = OperationIdentifier.Get(path);
-    private final Consumer<Operation> modification = op -> op.setOperationId("someMethodName");
+    private final Consumer<Operation> modification = operation -> operation.setOperationId("someMethodName");
 
     @Test
     public void report_if_path_does_does_not_exist() {
