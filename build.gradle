@@ -45,7 +45,7 @@ pmd {
 
 dependencies {
     compile(
-        'io.swagger:swagger-parser:1.0.17'
+        'io.swagger:swagger-parser:1.0.21'
         , 'com.github.fge:json-schema-validator:2.2.6'
     )
     testCompile(

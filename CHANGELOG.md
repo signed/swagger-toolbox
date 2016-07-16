@@ -18,7 +18,7 @@ Swagger swagger = swaggerMerge.merge(first, second).swagger();
 - nothing yet
 
 ### Changed
-- nothing yet
+- updated swagger-parser from 1.0.17 to 1.0.21
 
 ### Deprecated
 - nothing yet
