@@ -9,6 +9,7 @@ buildscript {
 }
 
 plugins {
+    id 'com.github.ben-manes.versions' version '0.13.0'
     id "net.saliman.cobertura" version "2.3.2"
     id "com.github.kt3k.coveralls" version "2.6.3"
 }
@@ -45,13 +46,13 @@ pmd {
 
 dependencies {
     compile(
-        'io.swagger:swagger-parser:1.0.21'
+        'io.swagger:swagger-parser:1.0.22'
         , 'com.github.fge:json-schema-validator:2.2.6'
     )
     testCompile(
         'junit:junit:4.12'
         , 'org.hamcrest:java-hamcrest:2.0.0.0'
-        , 'org.mockito:mockito-core:2.0.86-beta'
+        , 'org.mockito:mockito-core:2.0.111-beta'
         , 'info.cukes:cucumber-java:1.2.4'
         , 'info.cukes:cucumber-junit:1.2.4'
     )
