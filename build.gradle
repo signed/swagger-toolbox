@@ -52,9 +52,9 @@ dependencies {
     testCompile(
         'junit:junit:4.12'
         , 'org.hamcrest:java-hamcrest:2.0.0.0'
-        , 'org.mockito:mockito-core:2.0.111-beta'
-        , 'info.cukes:cucumber-java:1.2.4'
-        , 'info.cukes:cucumber-junit:1.2.4'
+        , 'org.mockito:mockito-core:2.1.0-RC.2'
+        , 'info.cukes:cucumber-java:1.2.5'
+        , 'info.cukes:cucumber-junit:1.2.5'
     )
 }
 
@@ -68,7 +68,6 @@ test {
         exceptionFormat = 'full'
     }
 }
-
 
 task wrapper(type: Wrapper) {
     distributionUrl = 'https://services.gradle.org/distributions/gradle-2.11-all.zip'
