@@ -6,7 +6,7 @@ import io.swagger.models.Tag;
 import io.swagger.models.parameters.Parameter;
 import io.swagger.models.parameters.RefParameter;
 import io.swagger.util.Yaml;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.Iterator;
@@ -20,14 +20,14 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.is;
 
-public class SwaggerSort_Test {
+class SwaggerSort_Test {
 
     private final List<String> unordered = Arrays.asList("zebra", "ape", "Ant", "aaa");
     private final List<String> ordered = Arrays.asList("aaa", "Ant", "ape", "zebra");
     private final SwaggerBuilder builder = SwaggerMother.emptyApiDefinition();
 
     @Test
-    public void sort_tags_by_case_insensitive_name() {
+    void sort_tags_by_case_insensitive_name() {
         unordered.forEach(builder::defineTag);
         Iterator<Tag> tags = sort().getTags().iterator();
 
@@ -35,7 +35,7 @@ public class SwaggerSort_Test {
     }
 
     @Test
-    public void sort_model_definitions_by_case_insensitive_identifier() {
+    void sort_model_definitions_by_case_insensitive_identifier() {
         unordered.forEach(builder::withModelDefinition);
         Iterator<String> definitions = sort().getDefinitions().keySet().iterator();
 
@@ -43,7 +43,7 @@ public class SwaggerSort_Test {
     }
 
     @Test
-    public void sort_parameter_definitions_by_case_insensitive_identifier() {
+    void sort_parameter_definitions_by_case_insensitive_identifier() {
         unordered.forEach((parameterIdentifier) -> builder.withParameterDefinition(parameterIdentifier, anyParameter()));
         Iterator<String> parameterDefinitions = sort().getParameters().keySet().iterator();
 
@@ -51,7 +51,7 @@ public class SwaggerSort_Test {
     }
 
     @Test
-    public void sort_shared_parameters_in_path_definitions_by_case_insensitive_name() {
+    void sort_shared_parameters_in_path_definitions_by_case_insensitive_name() {
         String path = anyPath();
         PathBuilder pathBuilder = builder.withPath(path);
         unordered.forEach(parameterName -> pathBuilder.withParameterForAllOperations(parameterName, anyParameterThatCanOccurMultipleTimesInASingleOperation()));
@@ -61,7 +61,7 @@ public class SwaggerSort_Test {
     }
 
     @Test
-    public void sort_parameters_in_operations_by_case_insensitive_name() {
+    void sort_parameters_in_operations_by_case_insensitive_name() {
         String path = anyPath();
         OperationBuilder operationBuilder = builder.withPath(path).withPost();
         unordered.forEach(parameterName -> operationBuilder.withParameter(parameterName, anyParameterThatCanOccurMultipleTimesInASingleOperation()));
@@ -71,7 +71,7 @@ public class SwaggerSort_Test {
     }
 
     @Test
-    public void sort_ref_parameters_by_the_parameter_they_are_referencing() {
+    void sort_ref_parameters_by_the_parameter_they_are_referencing() {
         String parameterIdentifier = anyParameterIdentifier();
         builder.withParameterDefinition(parameterIdentifier, anyParameter().withName("a"));
 

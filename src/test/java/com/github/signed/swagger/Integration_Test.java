@@ -8,7 +8,7 @@ import io.swagger.models.Swagger;
 import io.swagger.parser.SwaggerParser;
 import io.swagger.util.Json;
 import io.swagger.util.Yaml;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Collection;
 import java.util.List;
@@ -19,9 +19,9 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class Integration_Test {
+class Integration_Test {
 
-    public static final String MarkerTag = "public";
+    private static final String MarkerTag = "public";
     private final String first = TestFiles.Json.petstoreExample();
     private final String second = TestFiles.Json.petstoreExample();
     private final SwaggerParser parser = new SwaggerParser();
@@ -30,7 +30,7 @@ public class Integration_Test {
     private final SwaggerMerge merge = new SwaggerMerge();
 
     @Test
-    public void just_reduce() {
+    void just_reduce() {
         Swagger petShop = parser.read(first);
         petShop.getPaths().values().stream().map(Path::getOperations).flatMap(Collection::stream).forEach(operation -> operation.tag(MarkerTag));
         reduce.reduce(petShop);
@@ -40,7 +40,7 @@ public class Integration_Test {
     }
 
     @Test
-    public void reduce_trim() {
+    void reduce_trim() {
         Swagger petShop = parser.read(first);
         petShop.getPaths().values().stream().map(Path::getOperations).flatMap(Collection::stream).forEach(operation -> operation.tag(MarkerTag));
         reduce.reduce(petShop);
@@ -54,7 +54,7 @@ public class Integration_Test {
     }
 
     @Test
-    public void reduce_trim_merge() {
+    void reduce_trim_merge() {
         Swagger _1st = parser.read(first);
         _1st.getPaths().values().stream().map(Path::getOperations).flatMap(Collection::stream).forEach(operation -> operation.tag(MarkerTag));
         Swagger _2nd = parser.read(second);
@@ -66,7 +66,7 @@ public class Integration_Test {
     }
 
     @Test
-    public void model_with_composition() {
+    void model_with_composition() {
         Swagger swagger = parser.read(TestFiles.Yaml.modelWithComposition());
         Swagger trim = this.trim.trim(swagger);
         Yaml.prettyPrint(trim);

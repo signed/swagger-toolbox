@@ -4,7 +4,7 @@ import com.github.signed.swagger.essentials.*;
 import io.swagger.models.Swagger;
 import io.swagger.util.Json;
 import io.swagger.util.Yaml;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
 
@@ -13,23 +13,23 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.nullValue;
 
-public class SwaggerTrim_Test {
+class SwaggerTrim_Test {
     private final SwaggerBuilder swaggerBuilder = SwaggerMother.emptyApiDefinition();
 
     @Test
-    public void trim_of_empty_swagger_definition_should_work() {
+    void trim_of_empty_swagger_definition_should_work() {
         assertThat(trimmed().getTags(), nullValue());
     }
 
     @Test
-    public void trim_a_swagger_with_untagged_path_definition() {
+    void trim_a_swagger_with_untagged_path_definition() {
         swaggerBuilder.withPath("/").withPost();
 
         assertThat(trimmed(), not(nullValue()));
     }
 
     @Test
-    public void do_not_remove_a_model_that_is_referenced_in_another_model_that_is_actually_referenced(){
+    void do_not_remove_a_model_that_is_referenced_in_another_model_that_is_actually_referenced(){
         PathBuilder path = swaggerBuilder.withPath("/");
         path.withPost();
         path.withParameterForAllOperations(ParameterMother.anyParameterReferencingModelDefinition("referenced-in-path"));
@@ -41,7 +41,7 @@ public class SwaggerTrim_Test {
     }
 
     @Test
-    public void remove_empty_tag_lists_in_path_operations() {
+    void remove_empty_tag_lists_in_path_operations() {
         swaggerBuilder.withPath("/").withPost();
         Swagger swagger = swaggerBuilder.build();
         swagger.getPath("/").getPost().setTags(Collections.emptyList());
