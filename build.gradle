@@ -54,7 +54,7 @@ dependencies {
         , 'org.junit.jupiter:junit-jupiter-api:5.3.2'
         , 'org.junit.jupiter:junit-jupiter-params:5.3.2'
         , 'org.hamcrest:java-hamcrest:2.0.0.0'
-        , 'org.mockito:mockito-core:2.2.15'
+        , 'org.mockito:mockito-core:2.23.4'
         , 'info.cukes:cucumber-java:1.2.5'
         , 'info.cukes:cucumber-junit:1.2.5'
     )
