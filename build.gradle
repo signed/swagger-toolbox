@@ -9,9 +9,9 @@ buildscript {
 }
 
 plugins {
-    id 'com.github.ben-manes.versions' version '0.13.0'
-    id "net.saliman.cobertura" version "2.3.2"
-    id "com.github.kt3k.coveralls" version "2.6.3"
+    id 'com.github.ben-manes.versions' version '0.20.0'
+    id "net.saliman.cobertura" version "2.6.0"
+    id "com.github.kt3k.coveralls" version "2.8.2"
 }
 
 cobertura.coverageFormats = ['html', 'xml']
@@ -67,8 +67,4 @@ test {
     testLogging {
         exceptionFormat = 'full'
     }
-}
-
-task wrapper(type: Wrapper) {
-    distributionUrl = 'https://services.gradle.org/distributions/gradle-3.1-all.zip'
 }
