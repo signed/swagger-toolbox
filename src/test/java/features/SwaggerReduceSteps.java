@@ -22,37 +22,37 @@ public class SwaggerReduceSteps {
     private Swagger reducedSwagger;
 
     @Given("^a swagger api description$")
-    public void a_swagger_api_description() throws Throwable {
+    public void a_swagger_api_description() {
         mergedSwaggerDescription = SwaggerMother.mergedSwaggerDescription();
     }
 
     @Given("^there is a path definition without the tag$")
-    public void there_is_a_path_definition_without_the_tag() throws Throwable {
+    public void there_is_a_path_definition_without_the_tag() {
         mergedSwaggerDescription.withPath(PathMother.notTaggedPath()).withOption();
     }
 
     @Given("^there is a path definition with the tag$")
-    public void there_is_a_path_definition_with_the_tag() throws Throwable {
+    public void there_is_a_path_definition_with_the_tag() {
         mergedSwaggerDescription.withPath(PathMother.taggedPath()).withPost().withTag("public");
     }
 
     @When("^the swagger api description gets reduced$")
-    public void the_swagger_api_description_gets_reduced() throws Throwable {
+    public void the_swagger_api_description_gets_reduced() {
         reducedSwagger = reduce.reduce(mergedSwaggerDescription.build());
     }
 
     @Then("^the untagged path definition is removed$")
-    public void the_untagged_path_definition_is_removed() throws Throwable {
+    public void the_untagged_path_definition_is_removed() {
         assertThat(reducedSwagger, not(hasPathDefinitionsFor(PathMother.notTaggedPath())));
     }
 
     @Then("^the tagged path definition is still present$")
-    public void the_tagged_path_definition_is_still_present() throws Throwable {
+    public void the_tagged_path_definition_is_still_present() {
         assertThat(reducedSwagger, hasPathDefinitionsFor(PathMother.taggedPath()));
     }
 
     @Then("^the tag is removed$")
-    public void the_tag_is_removed() throws Throwable {
+    public void the_tag_is_removed() {
         assertThat(reducedSwagger.getPath(PathMother.taggedPath()).getPost().getTags(), not(contains("public")));
     }
 

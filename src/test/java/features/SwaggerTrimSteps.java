@@ -29,7 +29,7 @@ public class SwaggerTrimSteps {
     }
 
     @Given("^only unreferenced tag definitions$")
-    public void only_unreferenced_tag_definitions() throws Throwable {
+    public void only_unreferenced_tag_definitions() {
         a_tag_definition_that_is_not_referenced_in_an_operation();
     }
 
