@@ -1,33 +1,12 @@
-buildscript {
-    repositories {
-        jcenter()
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'com.bmuschko:gradle-nexus-plugin:2.3.1'
-    }
-}
-
 plugins {
-    id 'com.github.ben-manes.versions' version '0.20.0'
-    id "net.saliman.cobertura" version "2.6.0"
-    id "com.github.kt3k.coveralls" version "2.8.2"
-}
-
-cobertura.coverageFormats = ['html', 'xml']
-
-
-apply plugin: 'java'
-apply plugin: 'pmd'
-
-if (project.hasProperty('release')) {
-    apply from: "$rootDir/gradle/buildscript/central.gradle"
+    id 'java'
+    id 'com.github.ben-manes.versions' version '0.46.0'
+    id 'com.github.kt3k.coveralls' version '2.12.2'
 }
 
 repositories {
     mavenLocal()
     mavenCentral()
-    jcenter()
 }
 
 sourceCompatibility = 1.8
@@ -36,20 +15,12 @@ targetCompatibility = 1.8
 group = 'com.github.signed.swagger'
 version = '0.2.0-SNAPSHOT'
 
-pmd {
-    consoleOutput = true
-    ignoreFailures = true
-    reportsDir = file("$project.buildDir/reports/pmd")
-    ruleSetFiles = files("config/pmd/ruleset.xml")
-    toolVersion = '5.4.1'
-}
-
 dependencies {
-    compile(
+    implementation(
         'io.swagger:swagger-parser:1.0.23'
         , 'com.github.fge:json-schema-validator:2.2.6'
     )
-    testCompile(
+    testImplementation(
         'junit:junit:4.12'
         , 'org.junit.jupiter:junit-jupiter-api:5.3.2'
         , 'org.junit.jupiter:junit-jupiter-params:5.3.2'
@@ -58,10 +29,8 @@ dependencies {
         , 'io.cucumber:cucumber-java:4.2.0'
         , 'io.cucumber:cucumber-junit:4.2.0'
     )
-    testRuntime(
-        'org.junit.jupiter:junit-jupiter-engine:5.3.2'
-        , 'org.junit.vintage:junit-vintage-engine:5.3.2'
-    )
+    testImplementation(platform('org.junit:junit-bom:5.9.3'))
+    testImplementation('org.junit.jupiter:junit-jupiter')
 }
 
 compileJava {
