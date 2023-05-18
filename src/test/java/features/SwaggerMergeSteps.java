@@ -7,9 +7,9 @@ import com.github.signed.swagger.essentials.SwaggerMother;
 import com.github.signed.swagger.merge.MergeResult;
 import com.github.signed.swagger.merge.SwaggerMerge;
 import com.github.signed.swagger.merge.SwaggerMergeException;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import io.swagger.models.Swagger;
 
 import static com.github.signed.swagger.essentials.SwaggerMatcher.hasPathDefinitionsFor;

@@ -19,6 +19,8 @@ dependencies {
     testImplementation(platform("org.junit:junit-bom:5.9.3"))
     testImplementation("org.junit.jupiter:junit-jupiter")
     testImplementation("org.junit.jupiter:junit-jupiter-params")
+    testImplementation("org.junit.platform:junit-platform-suite-api:1.9.3")
+    testImplementation("org.junit.platform:junit-platform-suite-engine:1.9.3")
 }
 
 tasks.withType<JavaCompile>().configureEach {
