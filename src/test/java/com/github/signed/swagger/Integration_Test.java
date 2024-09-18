@@ -12,12 +12,12 @@ import io.swagger.models.Swagger;
 import io.swagger.parser.SwaggerParser;
 import io.swagger.util.Json;
 import io.swagger.util.Yaml;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
 
@@ -58,7 +58,7 @@ class Integration_Test {
         Swagger _1st = parse(TestFiles.Json.petstoreExample());
         _1st.getPaths().values().stream().map(Path::getOperations).flatMap(Collection::stream).forEach(operation -> operation.tag(MarkerTag));
         Swagger _2nd = parse(TestFiles.Json.petstoreExample());
-        List<Swagger> collect = Stream.of(_1st, _2nd).map(reduce::reduce).map(trim::trim).collect(Collectors.toList());
+        List<Swagger> collect = Stream.of(_1st, _2nd).map(reduce::reduce).map(trim::trim).toList();
         Swagger result = this.merge.merge(collect.get(0), collect.get(1)).swagger();
         Yaml.prettyPrint(_1st);
         Json.prettyPrint(result);
@@ -74,11 +74,11 @@ class Integration_Test {
     }
 
     private Swagger parse(String file) {
-
         try {
             final var classpathLocation = file.replace("src/test/resources/", "/");
-            final var specificationAsString = Files.readString(
-                Paths.get(this.getClass().getResource(classpathLocation).toURI()), Charset.defaultCharset());
+            final var url = Optional.ofNullable(this.getClass().getResource(classpathLocation));
+            final var path = Paths.get(url.orElseThrow().toURI());
+            final var specificationAsString = Files.readString(path, StandardCharsets.UTF_8);
             return parser.parse(specificationAsString);
         } catch (Exception e) {
             throw new RuntimeException(e);
