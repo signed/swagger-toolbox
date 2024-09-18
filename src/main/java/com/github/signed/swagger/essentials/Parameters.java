@@ -1,16 +1,14 @@
 package com.github.signed.swagger.essentials;
 
-import java.util.Collections;
-import java.util.List;
-
 import com.github.signed.swagger.trim.DefinitionReference;
 import com.github.signed.swagger.trim.ParameterReference;
-
 import io.swagger.models.Model;
 import io.swagger.models.Swagger;
 import io.swagger.models.parameters.BodyParameter;
 import io.swagger.models.parameters.Parameter;
 import io.swagger.models.parameters.RefParameter;
+import java.util.Collections;
+import java.util.List;
 
 public class Parameters {
 

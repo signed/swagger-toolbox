@@ -1,12 +1,10 @@
 package com.github.signed.swagger.essentials;
 
-import java.util.List;
-import java.util.Map;
-
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-
 import io.swagger.models.Swagger;
+import java.util.List;
+import java.util.Map;
 
 public class SwaggerBuilder {
 

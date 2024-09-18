@@ -1,15 +1,13 @@
 package com.github.signed.swagger.essentials;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-
-import com.github.signed.swagger.trim.ResponseReference;
 import com.github.signed.swagger.trim.DefinitionReference;
-
+import com.github.signed.swagger.trim.ResponseReference;
 import io.swagger.models.RefResponse;
 import io.swagger.models.Response;
 import io.swagger.models.properties.Property;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
 
 public class Responses {
     private final Properties properties = new Properties();

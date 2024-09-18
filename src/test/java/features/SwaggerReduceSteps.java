@@ -9,7 +9,6 @@ import com.github.signed.swagger.essentials.PathMother;
 import com.github.signed.swagger.essentials.SwaggerBuilder;
 import com.github.signed.swagger.essentials.SwaggerMother;
 import com.github.signed.swagger.reduce.SwaggerReduce;
-
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

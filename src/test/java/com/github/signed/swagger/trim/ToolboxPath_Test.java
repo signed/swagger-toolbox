@@ -1,9 +1,9 @@
 package com.github.signed.swagger.trim;
 
-import org.junit.jupiter.api.Test;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
+
+import org.junit.jupiter.api.Test;
 
 class ToolboxPath_Test {
 

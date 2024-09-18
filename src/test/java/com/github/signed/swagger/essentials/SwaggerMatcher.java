@@ -3,8 +3,11 @@ package com.github.signed.swagger.essentials;
 import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.toList;
 
+import io.swagger.models.Model;
+import io.swagger.models.Path;
+import io.swagger.models.Swagger;
+import io.swagger.models.Tag;
 import java.util.Map;
-
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
@@ -12,11 +15,6 @@ import org.hamcrest.Matchers;
 import org.hamcrest.TypeSafeDiagnosingMatcher;
 import org.hamcrest.collection.IsMapContaining;
 import org.hamcrest.core.AllOf;
-
-import io.swagger.models.Model;
-import io.swagger.models.Path;
-import io.swagger.models.Swagger;
-import io.swagger.models.Tag;
 
 public class SwaggerMatcher extends TypeSafeDiagnosingMatcher<Swagger> {
 

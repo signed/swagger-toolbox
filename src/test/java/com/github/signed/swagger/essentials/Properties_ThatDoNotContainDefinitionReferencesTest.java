@@ -2,11 +2,6 @@ package com.github.signed.swagger.essentials;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
-import java.util.Arrays;
-import java.util.Collection;
-
-import org.hamcrest.Matchers;
-
 import io.swagger.models.properties.DateProperty;
 import io.swagger.models.properties.DateTimeProperty;
 import io.swagger.models.properties.EmailProperty;
@@ -14,6 +9,9 @@ import io.swagger.models.properties.IntegerProperty;
 import io.swagger.models.properties.PasswordProperty;
 import io.swagger.models.properties.Property;
 import io.swagger.models.properties.StringProperty;
+import java.util.Arrays;
+import java.util.Collection;
+import org.hamcrest.Matchers;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 

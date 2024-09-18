@@ -1,5 +1,13 @@
 package features;
 
+import static com.github.signed.swagger.essentials.ParameterMother.*;
+import static com.github.signed.swagger.essentials.PathMother.anyPath;
+import static com.github.signed.swagger.essentials.ResponseMother.*;
+import static com.github.signed.swagger.essentials.SwaggerMatcher.hasModelDefinitionsFor;
+import static com.github.signed.swagger.essentials.SwaggerMother.emptyApiDefinition;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
+
 import com.github.signed.swagger.essentials.SwaggerBuilder;
 import com.github.signed.swagger.essentials.TagDefinitionBuilder;
 import com.github.signed.swagger.trim.SwaggerTrim;
@@ -8,14 +16,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.swagger.models.Swagger;
 import io.swagger.util.Yaml;
-
-import static com.github.signed.swagger.essentials.ParameterMother.*;
-import static com.github.signed.swagger.essentials.PathMother.anyPath;
-import static com.github.signed.swagger.essentials.ResponseMother.*;
-import static com.github.signed.swagger.essentials.SwaggerMatcher.hasModelDefinitionsFor;
-import static com.github.signed.swagger.essentials.SwaggerMother.emptyApiDefinition;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
 
 public class SwaggerTrimSteps {
 

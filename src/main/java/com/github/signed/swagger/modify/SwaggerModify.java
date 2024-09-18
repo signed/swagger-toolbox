@@ -2,14 +2,12 @@ package com.github.signed.swagger.modify;
 
 import static com.github.signed.swagger.modify.ModificationResult.failed;
 
-import java.util.Optional;
-import java.util.function.Consumer;
-
 import com.github.signed.swagger.essentials.Paths;
-
 import io.swagger.models.Operation;
 import io.swagger.models.Path;
 import io.swagger.models.Swagger;
+import java.util.Optional;
+import java.util.function.Consumer;
 
 public class SwaggerModify {
 

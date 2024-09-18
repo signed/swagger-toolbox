@@ -1,17 +1,5 @@
 package com.github.signed.swagger.sort;
 
-import com.github.signed.swagger.essentials.*;
-import io.swagger.models.Swagger;
-import io.swagger.models.Tag;
-import io.swagger.models.parameters.Parameter;
-import io.swagger.models.parameters.RefParameter;
-import io.swagger.util.Yaml;
-import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-
 import static com.github.signed.swagger.essentials.ParameterMatcher.parameterNamed;
 import static com.github.signed.swagger.essentials.ParameterMother.*;
 import static com.github.signed.swagger.essentials.PathMother.anyPath;
@@ -19,6 +7,17 @@ import static com.github.signed.swagger.essentials.TagMatcher.tagNamed;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.is;
+
+import com.github.signed.swagger.essentials.*;
+import io.swagger.models.Swagger;
+import io.swagger.models.Tag;
+import io.swagger.models.parameters.Parameter;
+import io.swagger.models.parameters.RefParameter;
+import io.swagger.util.Yaml;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+import org.junit.jupiter.api.Test;
 
 class SwaggerSort_Test {
 

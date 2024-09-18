@@ -1,5 +1,9 @@
 package com.github.signed.swagger;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.MatcherAssert.assertThat;
+
 import com.github.signed.swagger.merge.SwaggerMerge;
 import com.github.signed.swagger.reduce.SwaggerReduce;
 import com.github.signed.swagger.trim.SwaggerTrim;
@@ -8,16 +12,11 @@ import io.swagger.models.Swagger;
 import io.swagger.parser.SwaggerParser;
 import io.swagger.util.Json;
 import io.swagger.util.Yaml;
-import org.junit.jupiter.api.Test;
-
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.hamcrest.MatcherAssert.assertThat;
+import org.junit.jupiter.api.Test;
 
 class Integration_Test {
 

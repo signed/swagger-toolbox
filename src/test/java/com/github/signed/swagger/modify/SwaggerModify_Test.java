@@ -1,15 +1,14 @@
 package com.github.signed.swagger.modify;
 
-import com.github.signed.swagger.essentials.SwaggerBuilder;
-import io.swagger.models.Operation;
-import org.junit.jupiter.api.Test;
-
-import java.util.function.Consumer;
-
 import static com.github.signed.swagger.essentials.PathMother.anyPath;
 import static com.github.signed.swagger.essentials.SwaggerMother.emptyApiDefinition;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
+
+import com.github.signed.swagger.essentials.SwaggerBuilder;
+import io.swagger.models.Operation;
+import java.util.function.Consumer;
+import org.junit.jupiter.api.Test;
 
 class SwaggerModify_Test {
 

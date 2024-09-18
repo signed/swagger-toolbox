@@ -1,11 +1,10 @@
 package com.github.signed.swagger.essentials;
 
+import io.swagger.models.Tag;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
 import org.hamcrest.TypeSafeDiagnosingMatcher;
-
-import io.swagger.models.Tag;
 
 public class TagMatcher extends TypeSafeDiagnosingMatcher<Tag> {
 

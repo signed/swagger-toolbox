@@ -2,14 +2,11 @@ package com.github.signed.swagger.validate;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
-import java.util.function.Supplier;
-
-import org.junit.jupiter.api.Test;
-
 import com.github.signed.swagger.essentials.SwaggerBuilder;
 import com.github.signed.swagger.essentials.SwaggerMother;
-
 import io.swagger.util.Json;
+import java.util.function.Supplier;
+import org.junit.jupiter.api.Test;
 
 class SwaggerValidate_Test {
 

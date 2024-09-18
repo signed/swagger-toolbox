@@ -1,5 +1,7 @@
 package com.github.signed.swagger.merge;
 
+import static java.util.stream.Collectors.toList;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.github.signed.swagger.essentials.SwaggerStreams;
 import com.github.signed.swagger.trim.ToolboxPath;
@@ -9,8 +11,6 @@ import io.swagger.models.Path;
 import io.swagger.models.Swagger;
 import io.swagger.models.Tag;
 import io.swagger.util.Json;
-import org.apache.commons.lang3.tuple.Pair;
-
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,8 +18,7 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
-
-import static java.util.stream.Collectors.toList;
+import org.apache.commons.lang3.tuple.Pair;
 
 public class SwaggerMerge {
 

@@ -1,17 +1,16 @@
 package com.github.signed.swagger.trim;
 
-import com.github.signed.swagger.essentials.*;
-import io.swagger.models.Swagger;
-import io.swagger.util.Json;
-import io.swagger.util.Yaml;
-import org.junit.jupiter.api.Test;
-
-import java.util.Collections;
-
 import static com.github.signed.swagger.essentials.SwaggerMatcher.hasModelDefinitionsFor;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.nullValue;
+
+import com.github.signed.swagger.essentials.*;
+import io.swagger.models.Swagger;
+import io.swagger.util.Json;
+import io.swagger.util.Yaml;
+import java.util.Collections;
+import org.junit.jupiter.api.Test;
 
 class SwaggerTrim_Test {
     private final SwaggerBuilder swaggerBuilder = SwaggerMother.emptyApiDefinition();

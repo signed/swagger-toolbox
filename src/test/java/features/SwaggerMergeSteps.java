@@ -1,6 +1,10 @@
 package features;
 
 
+import static com.github.signed.swagger.essentials.SwaggerMatcher.hasPathDefinitionsFor;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
+
 import com.github.signed.swagger.essentials.SwaggerBuilder;
 import com.github.signed.swagger.essentials.SwaggerMatcher;
 import com.github.signed.swagger.essentials.SwaggerMother;
@@ -11,10 +15,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.swagger.models.Swagger;
-
-import static com.github.signed.swagger.essentials.SwaggerMatcher.hasPathDefinitionsFor;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
 
 public class SwaggerMergeSteps {
 

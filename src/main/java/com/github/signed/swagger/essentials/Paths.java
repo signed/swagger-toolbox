@@ -1,10 +1,9 @@
 package com.github.signed.swagger.essentials;
 
-import java.util.Optional;
-
 import io.swagger.models.HttpMethod;
 import io.swagger.models.Operation;
 import io.swagger.models.Path;
+import java.util.Optional;
 
 public class Paths {
 

@@ -6,19 +6,11 @@ import static java.util.Optional.ofNullable;
 import static java.util.stream.Collectors.toMap;
 import static java.util.stream.Collectors.toSet;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-
 import com.github.signed.swagger.essentials.Models;
 import com.github.signed.swagger.essentials.Parameters;
 import com.github.signed.swagger.essentials.Responses;
 import com.github.signed.swagger.essentials.SwaggerStreams;
 import com.google.common.collect.Sets;
-
 import io.swagger.models.Model;
 import io.swagger.models.Operation;
 import io.swagger.models.Path;
@@ -26,6 +18,12 @@ import io.swagger.models.Response;
 import io.swagger.models.Swagger;
 import io.swagger.models.Tag;
 import io.swagger.models.parameters.Parameter;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class SwaggerTrim {
 

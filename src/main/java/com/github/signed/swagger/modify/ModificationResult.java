@@ -1,9 +1,8 @@
 package com.github.signed.swagger.modify;
 
+import io.swagger.models.Swagger;
 import java.util.Optional;
 import java.util.function.Consumer;
-
-import io.swagger.models.Swagger;
 
 public class ModificationResult {
 

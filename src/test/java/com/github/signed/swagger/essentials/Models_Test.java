@@ -1,12 +1,12 @@
 package com.github.signed.swagger.essentials;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
+
 import io.swagger.models.ArrayModel;
 import io.swagger.models.properties.StringProperty;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
 
 class Models_Test {
 

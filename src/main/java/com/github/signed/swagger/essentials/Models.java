@@ -2,20 +2,18 @@ package com.github.signed.swagger.essentials;
 
 import static java.util.stream.Collectors.toList;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-
 import com.github.signed.swagger.trim.DefinitionReference;
 import com.google.common.collect.Lists;
-
 import io.swagger.models.ArrayModel;
 import io.swagger.models.ComposedModel;
 import io.swagger.models.Model;
 import io.swagger.models.ModelImpl;
 import io.swagger.models.RefModel;
 import io.swagger.models.properties.Property;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
 
 public class Models {
 

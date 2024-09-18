@@ -1,9 +1,8 @@
 package com.github.signed.swagger.essentials;
 
-import java.util.Optional;
-
 import io.swagger.models.RefResponse;
 import io.swagger.models.Response;
+import java.util.Optional;
 
 public class ResponseBuilder {
     private Optional<String> maybeResponseDefinitionIdentifier = Optional.empty();

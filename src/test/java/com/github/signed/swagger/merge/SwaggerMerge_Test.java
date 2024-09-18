@@ -1,11 +1,11 @@
 package com.github.signed.swagger.merge;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+
 import com.github.signed.swagger.essentials.SwaggerBuilder;
 import com.github.signed.swagger.essentials.SwaggerMother;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.hamcrest.MatcherAssert.assertThat;
 
 class SwaggerMerge_Test {
 

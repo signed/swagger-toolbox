@@ -3,18 +3,16 @@ package com.github.signed.swagger.sort;
 import static com.github.signed.swagger.essentials.Collectors2.toLinkedMap;
 import static java.util.stream.Collectors.toList;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
-
 import com.github.signed.swagger.essentials.Parameters;
 import com.github.signed.swagger.essentials.SwaggerStreams;
-
 import io.swagger.models.Model;
 import io.swagger.models.Swagger;
 import io.swagger.models.Tag;
 import io.swagger.models.parameters.Parameter;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
 
 public class SwaggerSort {
 

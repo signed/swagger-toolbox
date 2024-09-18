@@ -1,5 +1,6 @@
 plugins {
     java
+    id("com.diffplug.spotless") version "7.0.0.BETA2"
 }
 
 repositories {
@@ -10,6 +11,13 @@ java {
     // https://docs.gradle.org/current/userguide/toolchains.html
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(17))
+    }
+}
+
+spotless {
+    java {
+        importOrder()
+        removeUnusedImports()
     }
 }
 

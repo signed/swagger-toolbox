@@ -2,18 +2,16 @@ package com.github.signed.swagger.validate;
 
 import static java.util.Optional.ofNullable;
 
-import java.util.Collections;
-import java.util.function.Supplier;
-
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.fge.jsonschema.core.report.ProcessingMessage;
 import com.github.fge.jsonschema.core.report.ProcessingReport;
 import com.github.fge.jsonschema.main.JsonSchema;
 import com.github.fge.jsonschema.main.JsonSchemaFactory;
-
 import io.swagger.parser.SwaggerParser;
 import io.swagger.parser.util.SwaggerDeserializationResult;
 import io.swagger.util.Json;
+import java.util.Collections;
+import java.util.function.Supplier;
 
 public class SwaggerValidate {
 

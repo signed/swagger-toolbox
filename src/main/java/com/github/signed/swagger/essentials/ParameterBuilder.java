@@ -1,11 +1,10 @@
 package com.github.signed.swagger.essentials;
 
+import static java.lang.Boolean.TRUE;
+
 import io.swagger.models.RefModel;
 import io.swagger.models.parameters.*;
-
 import java.util.Optional;
-
-import static java.lang.Boolean.TRUE;
 
 public class ParameterBuilder {
     private Optional<String> maybeReferenceToADefinition = Optional.empty();

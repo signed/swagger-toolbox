@@ -1,8 +1,7 @@
 package com.github.signed.swagger.essentials;
 
-import java.util.Optional;
-
 import io.swagger.models.Info;
+import java.util.Optional;
 
 public class InfoBuilder {
     private Optional<String> maybeVersion = Optional.empty();

@@ -4,13 +4,12 @@ import static java.util.Collections.emptyList;
 import static java.util.Optional.ofNullable;
 import static java.util.stream.Collectors.toMap;
 
-import java.util.Map;
-import java.util.function.Function;
-import java.util.function.Predicate;
-
 import io.swagger.models.Operation;
 import io.swagger.models.Path;
 import io.swagger.models.Swagger;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class SwaggerReduce {
     public static SwaggerReduce publicAsMarkerTag() {

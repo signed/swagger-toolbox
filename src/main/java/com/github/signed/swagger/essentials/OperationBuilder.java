@@ -2,10 +2,9 @@ package com.github.signed.swagger.essentials;
 
 import static com.google.common.collect.Lists.newArrayList;
 
+import io.swagger.models.Operation;
 import java.util.List;
 import java.util.function.Consumer;
-
-import io.swagger.models.Operation;
 
 public class OperationBuilder {
     private final List<String> tags = newArrayList();

@@ -4,17 +4,15 @@ import static java.util.Collections.emptyList;
 import static java.util.Collections.emptyMap;
 import static java.util.Optional.ofNullable;
 
-import java.util.Map;
-import java.util.stream.Stream;
-
 import com.github.signed.swagger.trim.ToolboxPath;
-
 import io.swagger.models.Model;
 import io.swagger.models.Operation;
 import io.swagger.models.Path;
 import io.swagger.models.Response;
 import io.swagger.models.Swagger;
 import io.swagger.models.Tag;
+import java.util.Map;
+import java.util.stream.Stream;
 
 public class SwaggerStreams {
 

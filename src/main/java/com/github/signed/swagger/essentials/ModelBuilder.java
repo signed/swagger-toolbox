@@ -2,13 +2,11 @@ package com.github.signed.swagger.essentials;
 
 import static java.util.stream.Collectors.toMap;
 
-import java.util.Map;
-
 import com.google.common.collect.Maps;
-
 import io.swagger.models.Model;
 import io.swagger.models.ModelImpl;
 import io.swagger.models.properties.Property;
+import java.util.Map;
 
 public class ModelBuilder {
     private final Map<String, PropertyBuilder> propertyBuilders = Maps.newLinkedHashMap();
