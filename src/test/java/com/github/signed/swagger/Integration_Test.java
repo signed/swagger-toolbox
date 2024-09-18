@@ -24,8 +24,6 @@ import org.junit.jupiter.api.Test;
 class Integration_Test {
 
     private static final String MarkerTag = "public";
-    private final String first = TestFiles.Json.petstoreExample();
-    private final String second = TestFiles.Json.petstoreExample();
     private final SwaggerParser parser = new SwaggerParser();
     private final SwaggerReduce reduce = new SwaggerReduce(MarkerTag);
     private final SwaggerTrim trim = new SwaggerTrim();
@@ -33,7 +31,7 @@ class Integration_Test {
 
     @Test
     void just_reduce() {
-        Swagger petShop = parse(first);
+        Swagger petShop = parse(TestFiles.Json.petstoreExample());
         petShop.getPaths().values().stream().map(Path::getOperations).flatMap(Collection::stream).forEach(operation -> operation.tag(MarkerTag));
         reduce.reduce(petShop);
 
@@ -43,7 +41,7 @@ class Integration_Test {
 
     @Test
     void reduce_trim() {
-        Swagger petShop = parse(first);
+        Swagger petShop = parse(TestFiles.Json.petstoreExample());
         petShop.getPaths().values().stream().map(Path::getOperations).flatMap(Collection::stream).forEach(operation -> operation.tag(MarkerTag));
         reduce.reduce(petShop);
 
@@ -57,9 +55,9 @@ class Integration_Test {
 
     @Test
     void reduce_trim_merge() {
-        Swagger _1st = parse(first);
+        Swagger _1st = parse(TestFiles.Json.petstoreExample());
         _1st.getPaths().values().stream().map(Path::getOperations).flatMap(Collection::stream).forEach(operation -> operation.tag(MarkerTag));
-        Swagger _2nd = parse(second);
+        Swagger _2nd = parse(TestFiles.Json.petstoreExample());
         List<Swagger> collect = Stream.of(_1st, _2nd).map(reduce::reduce).map(trim::trim).collect(Collectors.toList());
         Swagger result = this.merge.merge(collect.get(0), collect.get(1)).swagger();
         Yaml.prettyPrint(_1st);
