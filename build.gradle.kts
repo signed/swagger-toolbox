@@ -2,11 +2,15 @@ plugins {
     java
 }
 
-group = "com.github.signed.swagger"
-version = "0.2.0-SNAPSHOT"
-
 repositories {
     mavenCentral()
+}
+
+java {
+    // https://docs.gradle.org/current/userguide/toolchains.html
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
 }
 
 dependencies {
@@ -19,13 +23,6 @@ dependencies {
     testImplementation(platform("org.junit:junit-bom:5.11.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
     testImplementation("org.junit.platform:junit-platform-suite-engine")
-}
-
-java {
-    // https://docs.gradle.org/current/userguide/toolchains.html
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(17))
-    }
 }
 
 tasks.test {
