@@ -23,10 +23,11 @@ dependencies {
     testImplementation("org.junit.platform:junit-platform-suite-engine:1.9.3")
 }
 
-tasks.withType<JavaCompile>().configureEach {
-    options.release.set(8)
-    options.encoding = "UTF-8"
-    options.compilerArgs.addAll(listOf("-Xlint", "-Xlint:-serial", "-Xlint:-path"))
+java {
+    // https://docs.gradle.org/current/userguide/toolchains.html
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
 }
 
 tasks.test {
