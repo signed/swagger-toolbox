@@ -30,7 +30,7 @@ dependencies {
     testImplementation("io.cucumber:cucumber-junit-platform-engine:7.18.1")
     testImplementation(platform("org.junit:junit-bom:5.11.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
-    testImplementation("org.junit.platform:junit-platform-suite-engine")
+    testImplementation("org.junit.platform:junit-platform-suite")
 }
 
 tasks.test {
