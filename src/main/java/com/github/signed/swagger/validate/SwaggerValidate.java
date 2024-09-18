@@ -7,9 +7,8 @@ import com.github.fge.jsonschema.core.report.ProcessingMessage;
 import com.github.fge.jsonschema.core.report.ProcessingReport;
 import com.github.fge.jsonschema.main.JsonSchema;
 import com.github.fge.jsonschema.main.JsonSchemaFactory;
-import io.swagger.parser.SwaggerParser;
-import io.swagger.parser.util.SwaggerDeserializationResult;
-import io.swagger.util.Json;
+import io.swagger.parser.OpenAPIParser;
+import io.swagger.v3.core.util.Json;
 import java.util.Collections;
 import java.util.function.Supplier;
 
@@ -29,8 +28,8 @@ public class SwaggerValidate {
     }
 
     private void getBasicMessagesFromSwaggerParser(JsonBlob swagger, ValidationResultBuilder validationResultBuilder) {
-        SwaggerDeserializationResult result = new SwaggerParser().readWithInfo(swagger.asString());
-        ofNullable(result.getMessages()).orElse(Collections.emptyList()).forEach(message -> validationResultBuilder.message().level("error").message(message));
+        final var newResult = new OpenAPIParser().readContents(swagger.asString(), null, null);
+        ofNullable(newResult.getMessages()).orElse(Collections.emptyList()).forEach(message -> validationResultBuilder.message().level("error").message(message));
     }
 
     private void validateAgainstJsonSchema(JsonBlob swagger, ValidationResultBuilder validationResultBuilder) {

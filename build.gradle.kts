@@ -22,7 +22,7 @@ spotless {
 }
 
 dependencies {
-    implementation("io.swagger:swagger-parser:1.0.71")
+    implementation("io.swagger.parser.v3:swagger-parser:2.1.21")
     implementation("com.github.fge:json-schema-validator:2.2.6")
     testImplementation("org.hamcrest:java-hamcrest:2.0.0.0")
     testImplementation("io.cucumber:cucumber-java:7.18.1")
